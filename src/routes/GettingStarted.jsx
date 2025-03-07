@@ -73,244 +73,9 @@ export function GettingStarted() {
     // }}
     >
       <DashboardHeader
-        title="Getting Started"
+        // title="Getting Started"
         // subtitle="Welcome back, Ally"
-        actions={
-          <Stack spacing={1} direction="row">
-            {/* <Button
-              variant="outlined"
-              color="secondary"
-              endIcon={<TbColorSwatch size={14} />}
-              onClick={customizeDisclosure.onOpen}
-            >
-              Customize Theme
-            </Button> */}
-            {/* <Popover
-              open={customizeDisclosure.isOpen}
-              anchorEl={customizeDisclosure.anchorEl}
-              onClose={customizeDisclosure.onClose}
-              sx={{
-                '.MuiPaper-root': {
-                  boxShadow: 2,
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  textAlign: 'left',
-                  padding: 2,
-                  minWidth: 300,
-                  maxWidth: 440,
-                  gap: 1,
-                  position: 'relative',
-                  width: '100%',
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: 'sm',
-                    color: 'gray.800',
-                  }}
-                >
-                  Color
-                </Typography>
-                <Box
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: 1,
-                    width: '100%',
-                  }}
-                >
-                  {ALL_AVAIL_COLOR_SCALES_LIST.map((colorScale) => {
-                    return (
-                      <Button
-                        key={colorScale.value}
-                        color="secondary"
-                        size="small"
-                        onClick={() => setActiveColorScale(colorScale.value)}
-                        sx={{
-                          width: '100%',
-                          gap: 1,
-                          justifyContent: 'flex-start',
-                        }}
-                      >
-                        <ColorDot color={colorScale.value} />
-                        {colorScale.label}
-                      </Button>
-                    );
-                  })}
-                </Box>
-                <Typography
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: 'sm',
-                    color: 'gray.800',
-                  }}
-                >
-                  Radius
-                </Typography>
-                <Box
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: 1,
-                    width: '100%',
-                  }}
-                >
-                  {ALL_RADIUS_SCALES_LIST.map((radiusScale) => {
-                    return (
-                      <Button
-                        key={radiusScale.value}
-                        color="secondary"
-                        size="small"
-                        onClick={() => setActiveRadiusScale(radiusScale.value)}
-                        sx={{
-                          width: '100%',
-                          justifyContent: 'flex-start',
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            flexDirection: 'column',
-                          }}
-                        >
-                          <Box>{radiusScale.label}</Box>
-                          <Box
-                            sx={{
-                              lineHeight: 1,
-                              fontSize: '2xs',
-                              color: 'gray.600',
-                              fontWeight: 400,
-                            }}
-                          >
-                            {radiusScale.description}
-                          </Box>
-                        </Box>
-                      </Button>
-                    );
-                  })}
-                </Box>
-                <Typography
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: 'sm',
-                    color: 'gray.800',
-                  }}
-                >
-                  Font
-                </Typography>
-                <Box
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: 1,
-                    width: '100%',
-                  }}
-                >
-                  {ALL_AVAIL_FONTS_LIST.map((fontObject) => {
-                    return (
-                      <Button
-                        key={fontObject.value}
-                        color="secondary"
-                        size="small"
-                        onClick={() => setActiveFont(fontObject.value)}
-                        sx={{
-                          width: '100%',
-                          justifyContent: 'flex-start',
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            display: 'flex',
-                            alignItems: 'flex-start',
-                            flexDirection: 'column',
-                          }}
-                        >
-                          <Box
-                            sx={{
-                              fontFamily: fontObject.value,
-                            }}
-                          >
-                            {fontObject.value}
-                          </Box>
-                        </Box>
-                      </Button>
-                    );
-                  })}
-                </Box>
-                <Typography
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: 'sm',
-                    color: 'gray.800',
-                  }}
-                >
-                  Mode
-                </Typography>
-                <Box
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
-                    gap: 1,
-                    width: '100%',
-                  }}
-                >
-                  <Button
-                    color="secondary"
-                    size="small"
-                    onClick={() => setMode('light')}
-                    sx={{
-                      width: '100%',
-                      justifyContent: 'flex-start',
-                    }}
-                  >
-                    Light
-                  </Button>
-                  <Button
-                    color="secondary"
-                    size="small"
-                    onClick={() => setMode('dark')}
-                    sx={{
-                      width: '100%',
-                      justifyContent: 'flex-start',
-                    }}
-                  >
-                    Dark
-                  </Button>
-                </Box>
-              </Box>
-            </Popover> */}
-            {/* <Button
-              variant="outlined"
-              color="secondary"
-              onClick={npsDisclosure.onToggle}
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-              }}
-            >
-              {npsDisclosure.isOpen ? 'Close' : 'Open'} Survey
-            </Button> */}
-            {/* <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                broadcastTour('welcome');
-              }}
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-              }}
-            >
-              Take a Tour
-            </Button> */}
-          </Stack>
-        }
+        actions={<Stack spacing={1} direction="row"></Stack>}
       />
       <Divider orientation="horizontal" flexItem />
       <Box
@@ -319,9 +84,9 @@ export function GettingStarted() {
           py: 8,
         }}
       >
-        <Container maxWidth="md">
-          <Box sx={{ maxWidth: 'md', mx: 'auto', textAlign: { lg: 'center' } }}>
-            {/* <Typography
+        <Box sx={{ maxWidth: 'md', mx: 'auto' }}>
+          <Box sx={{ maxWidth: 'md', textAlign: { lg: 'center' } }}>
+            <Typography
               sx={{
                 mb: 10,
                 color: 'gray.900',
@@ -333,7 +98,7 @@ export function GettingStarted() {
               }}
             >
               Getting Started
-            </Typography> */}
+            </Typography>
 
             <Typography
               sx={{
@@ -368,7 +133,7 @@ export function GettingStarted() {
               />
             ))}
           </Box>
-        </Container>
+        </Box>
       </Box>
     </PageContainer>
   );

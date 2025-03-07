@@ -8,6 +8,8 @@ import { FaAws } from 'react-icons/fa';
 import { VscAzure } from 'react-icons/vsc';
 import { DiGoogleCloudPlatform } from 'react-icons/di';
 import ApplyConfigurationsModal from '../components/ApplyConfigurationsModal';
+import { DashboardHeader } from '../components/DashboardHeader';
+import { FaArrowLeftLong } from 'react-icons/fa6';
 
 export function CloudProviderComparison() {
   const navigate = useNavigate();
@@ -15,50 +17,65 @@ export function CloudProviderComparison() {
 
   return (
     <PageContainer>
-      <Box>
-        <Container maxWidth="lg">
-          {/* Header */}
-          <Box
-            sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}
-          >
-            <Button
-              variant="outlined"
-              onClick={() => navigate(-1)}
+      <DashboardHeader
+        // title="Cloud Provider Comparison"
+        // subtitle="Welcome back, Ally"
+        actions={
+          <Stack spacing={1} direction="row">
+            {/* <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                broadcastTour('welcome');
+              }}
               sx={{
-                color: 'text.primary',
-                mt: 25,
-                width: '120px',
-                borderColor: 'divider',
-                '&:hover': {
-                  borderColor: 'primary.main',
-                  bgcolor: 'action.hover',
-                },
+                display: { xs: 'none', md: 'flex' },
               }}
             >
-              Back
-            </Button>
+              View Details
+            </Button> */}
+          </Stack>
+        }
+      />
+      <Divider orientation="horizontal" flexItem />
+      <Box sx={{ width: '100%' }}>
+        <Box>
+          {/* Header */}
+          <Box
+            sx={{ display: 'flex', alignItems: 'center', mb: 6, justifyContent: 'space-between' }}
+          >
+            {/* Left-aligned Button */}
+
+            <FaArrowLeftLong
+              color="gray"
+              onClick={() => navigate(-1)}
+              style={{ cursor: 'pointer' }}
+            />
+
+            {/* Centered Title */}
             <Typography
               variant="h4"
               sx={{
                 color: 'text.primary',
                 fontWeight: 700,
                 fontSize: { xs: '1.8rem', sm: '2.4rem' },
+                flexGrow: 1, // Pushes text to center
                 textAlign: 'center',
               }}
             >
               Cloud Provider Comparison
             </Typography>
+
+            {/* Invisible Box for Centering Trick */}
+            <Box sx={{ width: 40 }} />
             <Button
-              variant="outlined"
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                broadcastTour('welcome');
+              }}
               sx={{
-                color: 'text.primary',
-                mt: 25,
-                width: '150px',
-                borderColor: 'divider',
-                '&:hover': {
-                  borderColor: 'primary.main',
-                  bgcolor: 'action.hover',
-                },
+                display: { xs: 'none', md: 'flex' },
               }}
             >
               View Details
@@ -66,7 +83,7 @@ export function CloudProviderComparison() {
           </Box>
 
           {/* Main Content */}
-          <Box sx={{ display: 'flex', gap: 4 }}>
+          <Box sx={{ display: 'flex', gap: 4, width: '100%' }}>
             {/* Left Column - Our Solution */}
             <Box sx={{ flex: 1 }}>
               <Stack spacing={3}>
@@ -119,19 +136,11 @@ export function CloudProviderComparison() {
                     >
                       Our Solution
                     </Typography>
+
                     <Button
                       variant="outlined"
+                      color="secondary"
                       onClick={() => navigate('/generated-specs')}
-                      sx={{
-                        color: 'text.primary',
-                        borderColor: 'divider',
-                        '&:hover': {
-                          borderColor: 'primary.main',
-                          bgcolor: 'action.hover',
-                        },
-                        textTransform: 'none',
-                        padding: '6px 20px',
-                      }}
                     >
                       See Generated Specs
                     </Button>
@@ -182,26 +191,19 @@ export function CloudProviderComparison() {
                       Experience the best pricing with our solution compared to leading providers.
                     </Typography>
                   </Box>
-
-                  {/* Call-to-Action Button */}
-                  <Button
-                    onClick={() => setOpenModal(true)}
-                    variant="contained"
-                    fullWidth
-                    sx={{
-                      color: 'white',
-                      backgroundColor: 'primary.main',
-                      '&:hover': {
-                        backgroundColor: 'primary.dark',
-                      },
-                      textTransform: 'none',
-                      fontWeight: 600,
-                      padding: '10px 0',
-                    }}
-                  >
-                    Create Solution
-                  </Button>
                 </Paper>
+                {/* Call-to-Action Button */}
+
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => setOpenModal(true)}
+                  sx={{
+                    display: { xs: 'none', md: 'flex' },
+                  }}
+                >
+                  Create Solution
+                </Button>
               </Stack>
             </Box>
 
@@ -217,7 +219,7 @@ export function CloudProviderComparison() {
                 justifyContent: 'space-between',
               }}
             >
-              <Stack spacing={5.5}>
+              <Stack spacing={5}>
                 {[
                   { provider: 'Azure', cost: '$384/mo', icon: <VscAzure size={25} /> },
                   { provider: 'AWS', cost: '$395/mo', icon: <FaAws size={25} /> },
@@ -228,7 +230,7 @@ export function CloudProviderComparison() {
                     elevation={0}
                     sx={{
                       p: 3,
-                      minHeight: '100px',
+                      minHeight: '110px',
                       border: '1px solid',
                       borderColor: 'divider',
                       borderRadius: 2,
@@ -269,7 +271,7 @@ export function CloudProviderComparison() {
               </Stack>
             </Box>
           </Box>
-        </Container>
+        </Box>
       </Box>
 
       {/* Modal */}

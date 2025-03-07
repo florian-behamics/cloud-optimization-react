@@ -55,10 +55,7 @@ export const ALL_ROUTES = [
     path: '/optimize-sign-to-cloud',
     element: <OptimizeSignToCloud />,
   },
-  {
-    path: '/cloud-provider-comparison',
-    element: <CloudProviderComparison />,
-  },
+
   {
     path: '/generated-specs',
     element: <GeneratedSpecs />,
@@ -107,10 +104,7 @@ export const ALL_ROUTES = [
     path: '/optimization-result-report',
     element: <OptimizationResultReport />,
   },
-  {
-    path: '/cloud-template-output',
-    element: <CloudTemplateOutput />,
-  },
+
   {
     path: '/landing',
     element: <Landing />,
@@ -138,6 +132,14 @@ export const ALL_ROUTES = [
       {
         path: 'getting-started',
         element: <GettingStarted />,
+      },
+      {
+        path: 'cloud-provider-comparison',
+        element: <CloudProviderComparison />,
+      },
+      {
+        path: 'cloud-template-output',
+        element: <CloudTemplateOutput />,
       },
       {
         path: 'home',
