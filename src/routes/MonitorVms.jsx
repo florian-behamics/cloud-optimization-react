@@ -1,8 +1,10 @@
 import React from 'react';
-import { Container, Typography, Box, Paper, Button } from '@mui/material';
+import { Container, Typography, Box, Paper, Button, Stack, Divider } from '@mui/material';
 import { PieChart, LineChart } from '@mui/x-charts';
 import { SimpleLineChart } from '../components/SimpleLineChart';
 import { formatAbbreviatedNumber, formatShortDate } from '../core/formatters';
+import { PageContainer } from '../components/PageContainer';
+import { DashboardHeader } from '../components/DashboardHeader';
 
 const customPalette = ['#ADD8E6', '#4A90E2', '#D3D3D3'];
 
@@ -36,175 +38,183 @@ const lineData = [
 
 export const MonitorVms = (props) => {
   return (
-    <Container maxWidth="lg" sx={{ mt: 4 }}>
-      <Box display="flex" justifyContent="space-between">
-        <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, fontSize: 32 }}>
-          39 VMs
+    <PageContainer>
+      <DashboardHeader
+        title="Monitor Virtual Machines"
+        // subtitle="Welcome back, Ally"
+        actions={<Stack spacing={1} direction="row"></Stack>}
+      />
+      <Divider orientation="horizontal" flexItem />
+      <Container maxWidth="lg" sx={{ mt: 4 }}>
+        <Box display="flex" justifyContent="space-between">
+          <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, fontSize: 32 }}>
+            39 VMs
+          </Typography>
+          <Typography>25-01/2025 - 25/02/2025</Typography>
+        </Box>
+        <Typography variant="body2" sx={{ fontSize: 18, color: 'secondary.main' }}>
+          25 running 14 deallocated
         </Typography>
-        <Typography>25-01/2025 - 25/02/2025</Typography>
-      </Box>
-      <Typography variant="body2" sx={{ fontSize: 18, color: 'secondary.main' }}>
-        25 running 14 deallocated
-      </Typography>
 
-      {/* Donut Charts Section */}
-      <Box display="flex" justifyContent="start" gap={6} mt={4}>
-        <Paper
-          sx={{
-            p: 3,
-            textAlign: 'center',
-            width: 200,
-            height: 200,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Box sx={{ width: '100%', height: 250 }}>
-            <PieChart
-              series={[{ data: cpuData, innerRadius: 35, outerRadius: 75 }]}
-              width={250}
-              height={150}
-              colors={customPalette}
+        {/* Donut Charts Section */}
+        <Box display="flex" justifyContent="start" gap={6} mt={4}>
+          <Paper
+            sx={{
+              p: 3,
+              textAlign: 'center',
+              width: 200,
+              height: 200,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Box sx={{ width: '100%', height: 250 }}>
+              <PieChart
+                series={[{ data: cpuData, innerRadius: 35, outerRadius: 75 }]}
+                width={250}
+                height={150}
+                colors={customPalette}
+              />
+            </Box>
+          </Paper>
+          <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography variant="h6" sx={{ fontSize: 26 }}>
+                CPU
+              </Typography>
+            </Box>
+            <Typography variant="body2">Avg usage: 30%</Typography>
+            <Typography variant="body2">Min usage: 50%</Typography>
+            <Typography variant="body2">Max usage: 50%</Typography>
+          </Box>
+
+          <Paper
+            sx={{
+              ml: 10,
+              p: 3,
+              textAlign: 'center',
+              width: 200,
+              height: 200,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Box sx={{ width: '100%', height: 250 }}>
+              <PieChart
+                series={[{ data: ramData, innerRadius: 35, outerRadius: 75 }]}
+                width={250}
+                height={150}
+                colors={customPalette}
+              />
+            </Box>
+          </Paper>
+          <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography variant="h6" sx={{ fontSize: 26 }}>
+                RAM
+              </Typography>
+            </Box>
+            <Typography variant="body2">Avg usage: 45%</Typography>
+            <Typography variant="body2">Min usage: 10%</Typography>
+            <Typography variant="body2">Max usage: 80%</Typography>
+          </Box>
+        </Box>
+
+        {/* Line Chart Section */}
+        <Paper sx={{ mt: 4, p: 3, display: 'flex', justifyContent: 'center' }}>
+          <Box sx={{ width: '100%', height: 200 }}>
+            <SimpleLineChart
+              dataset={MINI_TIMESERIES}
+              xAxis={[
+                {
+                  ...COMMON_X_CONFIG,
+                  valueFormatter: formatShortDate,
+                  tickNumber: 7,
+                  tickLabelInterval: 'preserveStartEnd',
+                },
+              ]}
+              yAxis={[
+                {
+                  tickValues: [0, 500, 1000],
+                  valueFormatter: (value) => `$${value}`,
+                },
+              ]}
+              series={[
+                {
+                  dataKey: 'value',
+                  valueFormatter: (value) => (value ? `$${formatAbbreviatedNumber(value)}` : ''),
+                  curve: 'linear',
+                  label: 'CPU Usage',
+                  // area: true,
+                  // stroke: '#1976d2',
+                  stroke: '#ADD8E6',
+                  // color: '#ADD8E6',
+                  // fill: '#FF0000',
+                },
+              ]}
             />
           </Box>
         </Paper>
-        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="h6" sx={{ fontSize: 26 }}>
-              CPU
+
+        {/* Optimizations Found */}
+        <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
+          <Box display="flex" justifyContent="space-between" alignItems="center">
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                Optimizations found
+              </Typography>
+              <Typography variant="h3" sx={{ fontWeight: 500, color: 'secondary.main' }}>
+                Save 30% (400$)
+              </Typography>
+            </Box>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              Report Time: 25/02/2025
             </Typography>
           </Box>
-          <Typography variant="body2">Avg usage: 30%</Typography>
-          <Typography variant="body2">Min usage: 50%</Typography>
-          <Typography variant="body2">Max usage: 50%</Typography>
-        </Box>
 
-        <Paper
-          sx={{
-            ml: 10,
-            p: 3,
-            textAlign: 'center',
-            width: 200,
-            height: 200,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Box sx={{ width: '100%', height: 250 }}>
-            <PieChart
-              series={[{ data: ramData, innerRadius: 35, outerRadius: 75 }]}
-              width={250}
-              height={150}
-              colors={customPalette}
-            />
+          <Box sx={{ mt: 8, display: 'flex', justifyContent: 'space-between' }}>
+            <Typography variant="body2" sx={{ width: '71%', fontSize: 'lg' }}>
+              10 VMs to be resized
+            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '20%' }}>
+              <Typography sx={{ color: 'text.secondary' }}>Savings: $4000/mo</Typography>
+              <Typography sx={{ color: 'text.secondary' }}>20%</Typography>
+            </Box>
+          </Box>
+
+          <Box sx={{ mt: 2, display: 'flex', justifyContent: 'space-between' }}>
+            <Typography variant="body2" sx={{ width: '71%', fontSize: 'lg' }}>
+              5 VMs to be migrated into 3 VMs
+            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '20%' }}>
+              <Typography sx={{ color: 'text.secondary' }}>Savings: $2000/mo</Typography>
+              <Typography sx={{ color: 'text.secondary' }}>10%</Typography>
+            </Box>
+          </Box>
+
+          <Box sx={{ mt: 3, display: 'flex', justifyContent: 'end', gap: 2 }}>
+            <Button
+              variant="outlined"
+              color="primary"
+              sx={{ fontSize: '0.8rem', py: 1 }}
+              // onClick={() => setOpenModal(true)}
+            >
+              View More
+            </Button>
+            <Button
+              // onClick={() => navigate('/optimization-result-report')}
+              variant="contained"
+              color="primary"
+              sx={{ fontSize: '0.8rem', py: 1 }}
+            >
+              Apply
+            </Button>
           </Box>
         </Paper>
-        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="h6" sx={{ fontSize: 26 }}>
-              RAM
-            </Typography>
-          </Box>
-          <Typography variant="body2">Avg usage: 45%</Typography>
-          <Typography variant="body2">Min usage: 10%</Typography>
-          <Typography variant="body2">Max usage: 80%</Typography>
-        </Box>
-      </Box>
-
-      {/* Line Chart Section */}
-      <Paper sx={{ mt: 4, p: 3, display: 'flex', justifyContent: 'center' }}>
-        <Box sx={{ width: '100%', height: 200 }}>
-          <SimpleLineChart
-            dataset={MINI_TIMESERIES}
-            xAxis={[
-              {
-                ...COMMON_X_CONFIG,
-                valueFormatter: formatShortDate,
-                tickNumber: 7,
-                tickLabelInterval: 'preserveStartEnd',
-              },
-            ]}
-            yAxis={[
-              {
-                tickValues: [0, 500, 1000],
-                valueFormatter: (value) => `$${value}`,
-              },
-            ]}
-            series={[
-              {
-                dataKey: 'value',
-                valueFormatter: (value) => (value ? `$${formatAbbreviatedNumber(value)}` : ''),
-                curve: 'linear',
-                label: 'CPU Usage',
-                // area: true,
-                // stroke: '#1976d2',
-                stroke: '#ADD8E6',
-                // color: '#ADD8E6',
-                // fill: '#FF0000',
-              },
-            ]}
-          />
-        </Box>
-      </Paper>
-
-      {/* Optimizations Found */}
-      <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-              Optimizations found
-            </Typography>
-            <Typography variant="h3" sx={{ fontWeight: 500, color: 'secondary.main' }}>
-              Save 30% (400$)
-            </Typography>
-          </Box>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            Report Time: 25/02/2025
-          </Typography>
-        </Box>
-
-        <Box sx={{ mt: 8, display: 'flex', justifyContent: 'space-between' }}>
-          <Typography variant="body2" sx={{ width: '71%', fontSize: 'lg' }}>
-            10 VMs to be resized
-          </Typography>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '20%' }}>
-            <Typography sx={{ color: 'text.secondary' }}>Savings: $4000/mo</Typography>
-            <Typography sx={{ color: 'text.secondary' }}>20%</Typography>
-          </Box>
-        </Box>
-
-        <Box sx={{ mt: 2, display: 'flex', justifyContent: 'space-between' }}>
-          <Typography variant="body2" sx={{ width: '71%', fontSize: 'lg' }}>
-            5 VMs to be migrated into 3 VMs
-          </Typography>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '20%' }}>
-            <Typography sx={{ color: 'text.secondary' }}>Savings: $2000/mo</Typography>
-            <Typography sx={{ color: 'text.secondary' }}>10%</Typography>
-          </Box>
-        </Box>
-
-        <Box sx={{ mt: 3, display: 'flex', justifyContent: 'end', gap: 2 }}>
-          <Button
-            variant="outlined"
-            color="primary"
-            sx={{ fontSize: '0.8rem', py: 1 }}
-            // onClick={() => setOpenModal(true)}
-          >
-            View More
-          </Button>
-          <Button
-            // onClick={() => navigate('/optimization-result-report')}
-            variant="contained"
-            color="primary"
-            sx={{ fontSize: '0.8rem', py: 1 }}
-          >
-            Apply
-          </Button>
-        </Box>
-      </Paper>
-    </Container>
+      </Container>
+    </PageContainer>
   );
 };
 const MINI_TIMESERIES = [

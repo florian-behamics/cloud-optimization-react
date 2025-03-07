@@ -1,4 +1,4 @@
-import { Box, Button, Popover, Stack, Typography, useColorScheme } from '@mui/material';
+import { Box, Button, Popover, Stack, Typography, useColorScheme, Divider } from '@mui/material';
 import { TbAlertTriangle, TbArrowRight, TbColorSwatch } from 'react-icons/tb';
 import { BarChartComposition } from '../components/BarChartComposition';
 import { BarListComposition } from '../components/BarListComposition';
@@ -41,6 +41,7 @@ export function Home() {
             >
               Customize Theme
             </Button>
+
             <Popover
               open={customizeDisclosure.isOpen}
               anchorEl={customizeDisclosure.anchorEl}

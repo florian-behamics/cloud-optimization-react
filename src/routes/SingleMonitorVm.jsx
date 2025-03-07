@@ -1,8 +1,10 @@
 import React from 'react';
-import { Container, Typography, Box, Paper, Button } from '@mui/material';
+import { Container, Typography, Box, Paper, Button, Stack, Divider } from '@mui/material';
 import { PieChart, LineChart } from '@mui/x-charts';
 import { SimpleLineChart } from '../components/SimpleLineChart';
 import { formatAbbreviatedNumber, formatShortDate } from '../core/formatters';
+import { PageContainer } from '../components/PageContainer';
+import { DashboardHeader } from '../components/DashboardHeader';
 
 const customPalette = ['#ADD8E6', '#4A90E2', '#D3D3D3'];
 
@@ -36,7 +38,14 @@ const lineData = [
 
 export const SingleMonitorVm = (props) => {
   return (
-    <Container maxWidth="lg" sx={{ mt: 4 }}>
+    <PageContainer>
+      <DashboardHeader
+        title="Jenkins VM"
+        // subtitle="Welcome back, Ally"
+        actions={<Stack spacing={1} direction="row"></Stack>}
+      />
+      <Divider orientation="horizontal" flexItem />
+      {/* <Container maxWidth="lg" sx={{ mt: 4 }}> */}
       <Box display="flex" justifyContent="space-between">
         <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, fontSize: 32 }}>
           Jenkins VM
@@ -187,7 +196,8 @@ export const SingleMonitorVm = (props) => {
           </Button>
         </Box>
       </Paper>
-    </Container>
+      {/* </Container> */}
+    </PageContainer>
   );
 };
 const MINI_TIMESERIES = [

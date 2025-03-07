@@ -19,7 +19,7 @@ export const FindingOptimisationsLoader = () => {
     }, 100);
 
     const redirectTimeout = setTimeout(() => {
-      navigate('/cost-analysis'); // Redirect after 10s
+      navigate('/dashboard/cost-analysis'); // Redirect after 10s
     }, 11000);
 
     return () => {

@@ -47,10 +47,7 @@ export const ALL_ROUTES = [
     path: '/getting-started/questions',
     element: <GettingStartedQuestions />,
   },
-  {
-    path: '/optimize-cloud',
-    element: <OptimizeCloud />,
-  },
+
   {
     path: '/optimize-sign-to-cloud',
     element: <OptimizeSignToCloud />,
@@ -76,18 +73,7 @@ export const ALL_ROUTES = [
     path: '/applied-optimization-report',
     element: <AppliedOptimizationReport />,
   },
-  {
-    path: '/monitor-vms',
-    element: <MonitorVms />,
-  },
-  {
-    path: '/single-monitor-vm',
-    element: <SingleMonitorVm />,
-  },
-  {
-    path: '/cost-analysis',
-    element: <CostAnalysis />,
-  },
+
   {
     path: '/cloud-cost-history',
     element: <CloudCostHistory />,
@@ -99,10 +85,6 @@ export const ALL_ROUTES = [
   {
     path: '/apply-optimizations-finish',
     element: <ApplyOptimizationsFinish />,
-  },
-  {
-    path: '/optimization-result-report',
-    element: <OptimizationResultReport />,
   },
 
   {
@@ -134,8 +116,28 @@ export const ALL_ROUTES = [
         element: <GettingStarted />,
       },
       {
+        path: 'optimize-cloud',
+        element: <OptimizeCloud />,
+      },
+      {
+        path: 'cost-analysis',
+        element: <CostAnalysis />,
+      },
+      {
+        path: 'monitor-vms',
+        element: <MonitorVms />,
+      },
+      {
+        path: 'single-monitor-vm',
+        element: <SingleMonitorVm />,
+      },
+      {
         path: 'cloud-provider-comparison',
         element: <CloudProviderComparison />,
+      },
+      {
+        path: 'optimization-result-report',
+        element: <OptimizationResultReport />,
       },
       {
         path: 'cloud-template-output',

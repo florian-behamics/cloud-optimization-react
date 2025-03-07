@@ -10,11 +10,15 @@ import {
   IconButton,
   Collapse,
   Checkbox,
+  Stack,
+  Divider,
 } from '@mui/material';
+import { TbPlus } from 'react-icons/tb';
 import { PageContainer } from '../components/PageContainer';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ApplyConfigurationsOptimizationModal from '../components/ApplyConfigurationsOptimizationModal';
 import ExportOptimizationReportModal from '../components/ExportOptimizationReportModal';
+import { DashboardHeader } from '../components/DashboardHeader';
 
 export const OptimizationResultReport = () => {
   const [expanded, setExpanded] = useState({});
@@ -66,101 +70,107 @@ export const OptimizationResultReport = () => {
 
   return (
     <PageContainer>
-      <Container maxWidth="lg" sx={{ mt: 14 }}>
-        <AppBar
-          position="static"
-          color="white"
-          elevation={1}
-          sx={{ borderRadius: 3, backgroundColor: 'white' }}
-        >
-          <Toolbar sx={{ justifyContent: 'space-between' }}>
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
-              Optimization Result Report
-            </Typography>
-            <Button onClick={() => setOpenExportModal(true)} variant="contained" color="primary">
+      <DashboardHeader
+        title="Optimization Result Report"
+        // subtitle="Welcome back, Ally"
+        actions={
+          <Stack spacing={1} direction="row">
+            <Button
+              variant="contained"
+              color="primary"
+              startIcon={<TbPlus />}
+              onClick={() => {
+                setOpenExportModal(true);
+              }}
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+              }}
+            >
               Export
             </Button>
-          </Toolbar>
-        </AppBar>
+          </Stack>
+        }
+      />
+      <Divider orientation="horizontal" flexItem />
 
-        <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
-          <Typography variant="h6" sx={{ fontWeight: 600, mb: 6 }}>
-            Optimizations Found
-          </Typography>
+      <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
+        <Typography variant="h6" sx={{ fontWeight: 600, mb: 6 }}>
+          Optimizations Found
+        </Typography>
 
-          {[
-            { title: 'VMs to be Resized', list: resizedVMs, prefix: 'resized' },
-            { title: 'VMs to be Migrated', list: migratedVMs, prefix: 'migrated' },
-          ].map(({ title, list, prefix }) => (
-            <Box key={prefix} sx={{ mt: 4 }}>
-              <Box
-                display="grid"
-                gridTemplateColumns="40px 3fr 3fr 1fr 50px"
-                sx={{ fontWeight: 'bold', pb: 1, borderBottom: '2px solid #ddd' }}
-              >
-                <Box></Box>
-                <Typography variant="body2">{title}</Typography>
-                <Typography variant="body2">Savings: 4000$</Typography>
-                <Typography variant="body2">%</Typography>
-                <Box></Box>
-              </Box>
-
-              {list.map((vm) => (
-                <Box key={`${prefix}-${vm.id}`}>
-                  <Box
-                    display="grid"
-                    gridTemplateColumns="40px 3fr 3fr 1fr 50px"
-                    alignItems="center"
-                    sx={{ py: 1, borderBottom: '1px solid #ddd' }}
-                  >
-                    <Checkbox
-                      checked={!selectedVMs[`${prefix}-${vm.id}`]}
-                      onChange={() => toggleSelect(`${prefix}-${vm.id}`)}
-                    />
-                    <Typography variant="body2">{vm.currentVM}</Typography>
-                    <Typography variant="body2">{vm.optimizedVM}</Typography>
-                    <Typography variant="body2">{vm.savings}</Typography>
-                    <IconButton onClick={() => toggleExpand(`${prefix}-${vm.id}`)}>
-                      <ExpandMoreIcon
-                        sx={{
-                          transform: expanded[`${prefix}-${vm.id}`]
-                            ? 'rotate(180deg)'
-                            : 'rotate(0deg)',
-                        }}
-                      />
-                    </IconButton>
-                  </Box>
-
-                  <Collapse in={expanded[`${prefix}-${vm.id}`]}>
-                    <Box
-                      sx={{
-                        p: 2,
-                        borderRadius: 2,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                      }}
-                    >
-                      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        {vm.reason}
-                      </Typography>
-                      <Button variant="contained" color="primary">
-                        Monitor
-                      </Button>
-                    </Box>
-                  </Collapse>
-                </Box>
-              ))}
+        {[
+          { title: 'VMs to be Resized', list: resizedVMs, prefix: 'resized' },
+          { title: 'VMs to be Migrated', list: migratedVMs, prefix: 'migrated' },
+        ].map(({ title, list, prefix }) => (
+          <Box key={prefix} sx={{ mt: 4 }}>
+            <Box
+              display="grid"
+              gridTemplateColumns="40px 3fr 3fr 1fr 50px"
+              sx={{ fontWeight: 'bold', pb: 1, borderBottom: '2px solid #ddd' }}
+            >
+              <Box></Box>
+              <Typography variant="body2">{title}</Typography>
+              <Typography variant="body2">Savings: 4000$</Typography>
+              <Typography variant="body2">%</Typography>
+              <Box></Box>
             </Box>
-          ))}
 
-          <Box sx={{ mt: 3, textAlign: 'right' }}>
-            <Button onClick={() => setOpenModal(true)} variant="contained" color="primary">
-              Apply Optimizations
-            </Button>
+            {list.map((vm) => (
+              <Box key={`${prefix}-${vm.id}`}>
+                <Box
+                  display="grid"
+                  gridTemplateColumns="40px 3fr 3fr 1fr 50px"
+                  alignItems="center"
+                  sx={{ py: 1, borderBottom: '1px solid #ddd' }}
+                >
+                  <Checkbox
+                    checked={!selectedVMs[`${prefix}-${vm.id}`]}
+                    onChange={() => toggleSelect(`${prefix}-${vm.id}`)}
+                  />
+                  <Typography variant="body2">{vm.currentVM}</Typography>
+                  <Typography variant="body2">{vm.optimizedVM}</Typography>
+                  <Typography variant="body2">{vm.savings}</Typography>
+                  <IconButton onClick={() => toggleExpand(`${prefix}-${vm.id}`)}>
+                    <ExpandMoreIcon
+                      sx={{
+                        transform: expanded[`${prefix}-${vm.id}`]
+                          ? 'rotate(180deg)'
+                          : 'rotate(0deg)',
+                      }}
+                    />
+                  </IconButton>
+                </Box>
+
+                <Collapse in={expanded[`${prefix}-${vm.id}`]}>
+                  <Box
+                    sx={{
+                      p: 2,
+                      borderRadius: 2,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                      {vm.reason}
+                    </Typography>
+                    <Button variant="contained" color="primary">
+                      Monitor
+                    </Button>
+                  </Box>
+                </Collapse>
+              </Box>
+            ))}
           </Box>
-        </Paper>
-      </Container>
+        ))}
+
+        <Box sx={{ mt: 3, textAlign: 'right' }}>
+          <Button onClick={() => setOpenModal(true)} variant="contained" color="primary">
+            Apply Optimizations
+          </Button>
+        </Box>
+      </Paper>
+
       <ApplyConfigurationsOptimizationModal open={openModal} onClose={() => setOpenModal(false)} />
       <ExportOptimizationReportModal
         open={openExportModal}

@@ -58,7 +58,7 @@ export function GettingStarted() {
       title: 'Optimize Cloud',
       description: 'Analyze cost reduction opportunities and run automations to reduce costs.',
       icon: TbChartBar,
-      onClick: () => handleRouteSteps('/optimize-cloud'),
+      onClick: () => handleRouteSteps('/dashboard/optimize-cloud'),
     },
   ];
 

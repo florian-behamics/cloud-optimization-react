@@ -10,43 +10,71 @@ import {
   Grid,
   Tabs,
   Tab,
+  Divider,
+  FormControl,
+  FormLabel,
+  FilledInput,
+  RadioGroup,
+  Radio,
+  FormControlLabel,
+  TextareaAutosize,
+  Stack,
 } from '@mui/material';
+import { FileUpload } from '../components/FileUpload';
 import { PageContainer } from '../components/PageContainer';
+import { DatePicker } from '@mui/x-date-pickers';
+import { DashboardHeader } from '../components/DashboardHeader';
 import { useNavigate } from 'react-router-dom';
+import { TbPlus } from 'react-icons/tb';
+import { useDisclosure } from '../hooks/useDisclosure';
+import { SimpleDrawer } from '../components/SimpleDrawer';
+
 import ApplyConfigurationsOptimizationModal from '../components/ApplyConfigurationsOptimizationModal';
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box>{children}</Box>}
+    </div>
+  );
+}
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 export const CostAnalysis = () => {
   const navigate = useNavigate();
   const [tabValue, setTabValue] = React.useState(0);
   const [openModal, setOpenModal] = useState(false);
+  const [value, setValue] = useState(0);
+  const newEventDisclosure = useDisclosure();
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <PageContainer>
-      <Container maxWidth="lg" sx={{ mt: 3 }}>
-        {/* Navbar */}
-        <AppBar
-          position="static"
-          color="white"
-          elevation={1}
-          sx={{ borderRadius: 3, mt: 1, width: '100%', backgroundColor: 'white' }}
-        >
-          <Toolbar>
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
-              Cost Analysis
-            </Typography>
-          </Toolbar>
-          <Tabs
-            value={tabValue}
-            onChange={(event, newValue) => setTabValue(newValue)}
-            indicatorColor="primary"
-            textColor="primary"
-            sx={{ ml: 3, mb: 1 }}
-          >
-            <Tab label="Overview" />
-            <Tab label="Others..." />
-          </Tabs>
-        </AppBar>
+      <DashboardHeader title="Cost Analysis" />
+      <Stack>
+        <Tabs value={value} onChange={handleChange}>
+          <Tab label="Overview" {...a11yProps(0)} />
+          <Tab label="Others..." {...a11yProps(1)} />
+        </Tabs>
+        <Divider />
+      </Stack>
 
+      <Box>
         {/* Cost Comparison Section */}
         <Box sx={{ mt: 5 }}>
           <Grid container spacing={3} alignItems="stretch">
@@ -191,7 +219,7 @@ export const CostAnalysis = () => {
             </Button>
           </Box>
         </Paper>
-      </Container>
+      </Box>
       <ApplyConfigurationsOptimizationModal open={openModal} onClose={() => setOpenModal(false)} />
     </PageContainer>
   );

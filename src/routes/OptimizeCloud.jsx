@@ -1,6 +1,6 @@
 //import { Button } from '@mui/material';
 //import { TbInfoCircle } from 'react-icons/tb';
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container, Typography, Stack, Divider } from '@mui/material';
 import { PageContainer } from '../components/PageContainer';
 import { FrameworkLink } from '../framework/FrameworkLink';
 import OptimizeCloudCards from '../components/getting-started/OptimizeCloudCards';
@@ -11,6 +11,7 @@ import { VscAzure } from 'react-icons/vsc';
 // import { DiGoogleCloudPlatform } from 'react-icons/di';
 import { SiGooglecloud } from 'react-icons/si';
 import { useNavigate } from 'react-router-dom';
+import { DashboardHeader } from '../components/DashboardHeader';
 
 export function OptimizeCloud() {
   const navigate = useNavigate();
@@ -18,26 +19,6 @@ export function OptimizeCloud() {
   const handleRouteSteps = (option) => {
     navigate(option);
   };
-  //   const [currentStep, setCurrentStep] = useState(null); // Track the current step
-  //   const [answers, setAnswers] = useState([]); // Store answers for each step
-  //   const totalSteps = 5; // Total number of steps
-
-  //   const handleNext = (stepIndex, answer) => {
-  //     const newAnswers = [...answers];
-  //     newAnswers[stepIndex] = answer;
-  //     setAnswers(newAnswers);
-  //     setCurrentStep(stepIndex + 1); // Move to the next step
-  //   };
-
-  //   const handleBack = (stepIndex) => {
-  //     setCurrentStep(stepIndex - 1); // Move to the previous step
-  //   };
-
-  //   const handleClickNoCodeCloud = () => {
-  //     setCurrentStep(0); // Start from step 1 when clicking the card
-  //   };
-
-  //   console.log(currentStep);
 
   const features = [
     {
@@ -62,25 +43,43 @@ export function OptimizeCloud() {
 
   return (
     <PageContainer
-      customSx={{
-        minHeight: '80vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+    // customSx={{
+    //   minHeight: '80vh',
+    //   display: 'flex',
+    //   flexDirection: 'column',
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    // }}
     >
+      <DashboardHeader
+        // title="Getting Started"
+        // subtitle="Welcome back, Ally"
+        actions={<Stack spacing={1} direction="row"></Stack>}
+      />
+      <Divider orientation="horizontal" flexItem />
       <Box
         sx={{
           //   bgcolor: 'background.paper',
           py: 8,
         }}
       >
-        <Container maxWidth="md">
-          <Box sx={{ maxWidth: 'md', mx: 'auto', textAlign: { lg: 'center' } }}>
+        <Container
+          maxWidth="md"
+          sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+        >
+          <Box
+            sx={{
+              maxWidth: 'md',
+              mx: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             <Typography
               sx={{
-                mb: 10,
+                mb: 7,
                 color: 'gray.900',
                 fontWeight: 700,
                 fontSize: { xs: '3xl', sm: '5xl' },
@@ -93,7 +92,6 @@ export function OptimizeCloud() {
             </Typography>
             <Typography
               sx={{
-                mt: 1.5,
                 color: 'gray.600',
                 fontSize: 'md',
                 lineHeight: 1.75,
@@ -124,7 +122,7 @@ export function OptimizeCloud() {
             ))}
           </Box>
 
-          <Box sx={{ maxWidth: 'md', mt: 10, mx: 'auto', textAlign: { lg: 'center' } }}>
+          <Box sx={{ maxWidth: 'md', mt: 6, textAlign: { lg: 'center' } }}>
             <Typography
               sx={{
                 mt: 1.5,
