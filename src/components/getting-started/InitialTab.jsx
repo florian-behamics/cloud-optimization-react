@@ -42,8 +42,8 @@ export default function StatCardSimple({
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: 36,
-              height: 36,
+              width: 40,
+              height: 40,
               borderRadius: 999,
               color: 'background.default',
               bgcolor: 'primary.700',
@@ -53,7 +53,9 @@ export default function StatCardSimple({
           </Box>
         )}
 
-        <Typography sx={{ color: 'gray.900', fontWeight: 600, fontSize: 'md' }}>{title}</Typography>
+        <Typography sx={{ color: 'gray.900', fontWeight: 600, fontSize: '2xl' }}>
+          {title}
+        </Typography>
 
         <Typography
           sx={{

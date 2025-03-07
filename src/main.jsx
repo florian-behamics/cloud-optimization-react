@@ -42,10 +42,7 @@ export const ALL_ROUTES = [
     path: '/',
     element: <Homepage />,
   },
-  {
-    path: '/getting-started',
-    element: <GettingStarted />,
-  },
+
   {
     path: '/getting-started/questions',
     element: <GettingStartedQuestions />,
@@ -138,6 +135,10 @@ export const ALL_ROUTES = [
     path: '/dashboard',
     element: <DashboardLayout />,
     children: [
+      {
+        path: 'getting-started',
+        element: <GettingStarted />,
+      },
       {
         path: 'home',
         element: <Home />,

@@ -263,7 +263,7 @@ export function Sidebar() {
         >
           {/* <OrganizationSelector /> */}
         </Box>
-        <SidebarDivider />
+        {/* <SidebarDivider /> */}
         <Box
           sx={{
             display: 'flex',
