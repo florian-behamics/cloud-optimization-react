@@ -5,6 +5,9 @@ import { SimpleLineChart } from '../components/SimpleLineChart';
 import { formatAbbreviatedNumber, formatShortDate } from '../core/formatters';
 import { PageContainer } from '../components/PageContainer';
 import { DashboardHeader } from '../components/DashboardHeader';
+import { SimplePieChart } from '../components/SimplePieChart';
+import { ChartCard } from '../components/ChartCard';
+import { DUMMY_TIMESERIES } from '../data/timeseries';
 
 const customPalette = ['#ADD8E6', '#4A90E2', '#D3D3D3'];
 
@@ -56,75 +59,55 @@ export const SingleMonitorVm = (props) => {
         (8 vCPUs, 64GB RAM, 150GB storage), E2d3
       </Typography>
 
-      {/* Donut Charts Section */}
-      <Box display="flex" justifyContent="start" gap={6} mt={4}>
-        <Paper
-          sx={{
-            p: 3,
-            textAlign: 'center',
-            width: 200,
-            height: 200,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Box sx={{ width: '100%', height: 250 }}>
-            <PieChart
-              series={[{ data: cpuData, innerRadius: 35, outerRadius: 75 }]}
-              width={250}
-              height={150}
-              colors={customPalette}
-            />
-          </Box>
-        </Paper>
-        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="h6" sx={{ fontSize: 26 }}>
-              vCPUS: 8
-            </Typography>
-          </Box>
-          <Typography variant="body2">Avg usage: 30%</Typography>
-          <Typography variant="body2">Max usage: 50%</Typography>
-        </Box>
-
-        <Paper
-          sx={{
-            ml: 10,
-            p: 3,
-            textAlign: 'center',
-            width: 200,
-            height: 200,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Box sx={{ width: '100%', height: 250 }}>
-            <PieChart
-              series={[{ data: ramData, innerRadius: 35, outerRadius: 75 }]}
-              width={250}
-              height={150}
-              colors={customPalette}
-            />
-          </Box>
-        </Paper>
-        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography variant="h6" sx={{ fontSize: 26 }}>
-              Total RAM: 64GB
-            </Typography>
-          </Box>
-          <Typography variant="body2">Avg usage: 45%</Typography>
-          <Typography variant="body2">Max usage: 80%</Typography>
-        </Box>
-      </Box>
+      <ChartGrid>
+        <ChartCard title="CPU Usage" description="Sales by event">
+          <SimplePieChart
+            dataset={DUMMY_TIMESERIES}
+            colors={customPalette}
+            slotProps={{
+              legend: { hidden: true },
+            }}
+            series={[
+              {
+                data: [
+                  { label: 'Max CPU  Usage', value: 1200 },
+                  { label: 'Min CPU Usage', value: 880 },
+                  { label: 'Average CPU Usage', value: 175 },
+                ],
+              },
+            ]}
+          />
+        </ChartCard>
+        <ChartCard title="RAM Usage" description="Sales by event">
+          <SimplePieChart
+            dataset={DUMMY_TIMESERIES}
+            slotProps={{
+              legend: { hidden: true },
+            }}
+            series={[
+              {
+                data: [
+                  { label: 'Max RAM Usage', value: 1200 },
+                  { label: 'Min RAM Usage', value: 500 },
+                  { label: 'Average RAM Usage', value: 375 },
+                ],
+              },
+            ]}
+          />
+        </ChartCard>
+      </ChartGrid>
 
       {/* Line Chart Section */}
-      <Paper sx={{ mt: 4, p: 3, display: 'flex', justifyContent: 'center' }}>
-        <Box sx={{ width: '100%', height: 200 }}>
+      <Box sx={{ mt: 4 }}>
+        <ChartCard title="CPU Usage" description="Average CPU Usage %">
           <SimpleLineChart
             dataset={MINI_TIMESERIES}
+            yAxis={[
+              {
+                tickValues: [0, 200, 1000],
+                valueFormatter: (value) => `${value}%`,
+              },
+            ]}
             xAxis={[
               {
                 ...COMMON_X_CONFIG,
@@ -133,28 +116,17 @@ export const SingleMonitorVm = (props) => {
                 tickLabelInterval: 'preserveStartEnd',
               },
             ]}
-            yAxis={[
-              {
-                tickValues: [0, 500, 1000],
-                valueFormatter: (value) => `$${value}`,
-              },
-            ]}
             series={[
               {
                 dataKey: 'value',
-                valueFormatter: (value) => (value ? `$${formatAbbreviatedNumber(value)}` : ''),
+                valueFormatter: (value) => (value ? `${value}%` : ''),
                 curve: 'linear',
                 label: 'CPU Usage',
-                // area: true,
-                // stroke: '#1976d2',
-                stroke: '#ADD8E6',
-                // color: '#ADD8E6',
-                // fill: '#FF0000',
               },
             ]}
           />
-        </Box>
-      </Paper>
+        </ChartCard>
+      </Box>
 
       {/* Optimizations Found */}
       <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
@@ -200,14 +172,41 @@ export const SingleMonitorVm = (props) => {
     </PageContainer>
   );
 };
+function ChartGrid({ children }) {
+  return (
+    <Box
+      sx={{
+        display: { xs: 'grid', md: 'grid' },
+        gridTemplateColumns: {
+          xs: '1fr',
+          md: '1fr 1fr',
+          lg: '1fr 1fr 1fr',
+        },
+        gridAutoRows: '350px',
+        gap: 2,
+      }}
+    >
+      {children}
+    </Box>
+  );
+}
 const MINI_TIMESERIES = [
-  { date: '2021-01-01', value: 1210 },
-  { date: '2021-01-02', value: 980 },
-  { date: '2021-01-03', value: 1400 },
-  { date: '2021-01-04', value: 1510 },
-  { date: '2021-01-05', value: 2560 },
-  { date: '2021-01-06', value: 1310 },
-  { date: '2021-01-07', value: 1010 },
+  { date: '2021-01-01', value: 30 },
+  { date: '2021-01-02', value: 35 },
+  { date: '2021-01-03', value: 100 },
+  { date: '2021-01-04', value: 80 },
+  { date: '2021-01-05', value: 75 },
+  { date: '2021-01-06', value: 13 },
+  { date: '2021-01-07', value: 100 },
+];
+const MINI_TIMESERIES2 = [
+  { date: '2021-01-01', value: 10 },
+  { date: '2021-01-02', value: 10 },
+  { date: '2021-01-03', value: 30 },
+  { date: '2021-01-04', value: 50 },
+  { date: '2021-01-05', value: 40 },
+  { date: '2021-01-06', value: 90 },
+  { date: '2021-01-07', value: 95 },
 ];
 
 export default SingleMonitorVm;

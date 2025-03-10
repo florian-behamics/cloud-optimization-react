@@ -59,42 +59,11 @@ export const MonitorVms = (props) => {
           25 running 14 deallocated
         </Typography>
 
-        {/* Donut Charts Section */}
-        {/* <Box display="flex" justifyContent="start" gap={6} mt={4}> */}
-        {/* <Paper
-            sx={{
-              p: 3,
-              textAlign: 'center',
-              width: 200,
-              height: 200,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Box sx={{ width: '100%', height: 250 }}>
-              <PieChart
-                series={[{ data: cpuData, innerRadius: 35, outerRadius: 75 }]}
-                width={250}
-                height={150}
-                colors={customPalette}
-              />
-            </Box>
-          </Paper>
-          <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant="h6" sx={{ fontSize: 26 }}>
-                CPU
-              </Typography>
-            </Box>
-            <Typography variant="body2">Avg usage: 30%</Typography>
-            <Typography variant="body2">Min usage: 50%</Typography>
-            <Typography variant="body2">Max usage: 50%</Typography>
-          </Box> */}
         <ChartGrid>
           <ChartCard title="CPU Usage" description="Sales by event">
             <SimplePieChart
               dataset={DUMMY_TIMESERIES}
+              colors={customPalette}
               slotProps={{
                 legend: { hidden: true },
               }}
@@ -128,74 +97,6 @@ export const MonitorVms = (props) => {
           </ChartCard>
         </ChartGrid>
 
-        {/* <Paper
-            sx={{
-              ml: 10,
-              p: 3,
-              textAlign: 'center',
-              width: 200,
-              height: 200,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Box sx={{ width: '100%', height: 250 }}>
-              <PieChart
-                series={[{ data: ramData, innerRadius: 35, outerRadius: 75 }]}
-                width={250}
-                height={150}
-                colors={customPalette}
-              />
-            </Box>
-          </Paper> */}
-        {/* <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant="h6" sx={{ fontSize: 26 }}>
-                RAM
-              </Typography>
-            </Box>
-            <Typography variant="body2">Avg usage: 45%</Typography>
-            <Typography variant="body2">Min usage: 10%</Typography>
-            <Typography variant="body2">Max usage: 80%</Typography>
-          </Box> */}
-        {/* </Box> */}
-
-        {/* Line Chart Section */}
-        {/* <Paper sx={{ mt: 4, p: 3, display: 'flex', justifyContent: 'center' }}>
-          <Box sx={{ width: '100%', height: 200 }}>
-            <SimpleLineChart
-              dataset={MINI_TIMESERIES}
-              xAxis={[
-                {
-                  ...COMMON_X_CONFIG,
-                  valueFormatter: formatShortDate,
-                  tickNumber: 7,
-                  tickLabelInterval: 'preserveStartEnd',
-                },
-              ]}
-              yAxis={[
-                {
-                  tickValues: [0, 500, 1000],
-                  valueFormatter: (value) => `$${value}`,
-                },
-              ]}
-              series={[
-                {
-                  dataKey: 'value',
-                  valueFormatter: (value) => (value ? `$${formatAbbreviatedNumber(value)}` : ''),
-                  curve: 'linear',
-                  label: 'CPU Usage',
-                  // area: true,
-                  // stroke: '#1976d2',
-                  stroke: '#ADD8E6',
-                  // color: '#ADD8E6',
-                  // fill: '#FF0000',
-                },
-              ]}
-            />
-          </Box>
-        </Paper> */}
         <Box sx={{ mt: 4 }}>
           <ChartCard title="CPU Usage" description="Average CPU Usage %">
             <SimpleLineChart
