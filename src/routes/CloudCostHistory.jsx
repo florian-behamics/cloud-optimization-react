@@ -179,7 +179,7 @@ export const CloudCostHistory = () => {
                 <Button
                   variant="outlined"
                   size="small"
-                  onClick={() => navigate('/applied-optimization-report')}
+                  onClick={() => navigate('/dashboard/applied-optimization-report')}
                   sx={{ textTransform: 'none' }}
                 >
                   View

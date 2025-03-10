@@ -88,7 +88,7 @@ export function AuthOptimizeCloud() {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => navigate('/finding-optimisations')}
+          onClick={() => navigate('/dashboard/finding-optimizations')}
           sx={{
             display: { xs: 'none', md: 'flex' },
           }}

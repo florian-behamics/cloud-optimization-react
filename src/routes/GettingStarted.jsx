@@ -25,26 +25,6 @@ export function GettingStarted() {
   const handleRouteSteps = (option) => {
     navigate(option);
   };
-  //   const [currentStep, setCurrentStep] = useState(null); // Track the current step
-  //   const [answers, setAnswers] = useState([]); // Store answers for each step
-  //   const totalSteps = 5; // Total number of steps
-
-  //   const handleNext = (stepIndex, answer) => {
-  //     const newAnswers = [...answers];
-  //     newAnswers[stepIndex] = answer;
-  //     setAnswers(newAnswers);
-  //     setCurrentStep(stepIndex + 1); // Move to the next step
-  //   };
-
-  //   const handleBack = (stepIndex) => {
-  //     setCurrentStep(stepIndex - 1); // Move to the previous step
-  //   };
-
-  //   const handleClickNoCodeCloud = () => {
-  //     setCurrentStep(0); // Start from step 1 when clicking the card
-  //   };
-
-  //   console.log(currentStep);
 
   const features = [
     {
@@ -52,7 +32,7 @@ export function GettingStarted() {
       description:
         'Using simple templates, create the most cost-effective cloud architecture automatically.',
       icon: TbCloud,
-      onClick: () => handleRouteSteps('/getting-started/questions'),
+      onClick: () => handleRouteSteps('/dashboard/getting-started/questions'),
     },
     {
       title: 'Optimize Cloud',
@@ -63,15 +43,7 @@ export function GettingStarted() {
   ];
 
   return (
-    <PageContainer
-    // customSx={{
-    //   minHeight: '80vh',
-    //   display: 'flex',
-    //   flexDirection: 'column',
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    // }}
-    >
+    <PageContainer>
       <DashboardHeader
         // title="Getting Started"
         // subtitle="Welcome back, Ally"

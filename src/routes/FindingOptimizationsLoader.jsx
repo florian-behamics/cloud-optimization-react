@@ -3,7 +3,7 @@ import { Box, Typography, LinearProgress, Container, Fade } from '@mui/material'
 import { PageContainer } from '../components/PageContainer';
 import { useNavigate } from 'react-router-dom';
 
-export const FindingOptimisationsLoader = () => {
+export const FindingOptimizationsLoader = () => {
   const [progress, setProgress] = useState(0);
   const [fadeIn, setFadeIn] = useState(false);
   const navigate = useNavigate();
@@ -77,4 +77,4 @@ export const FindingOptimisationsLoader = () => {
   );
 };
 
-export default FindingOptimisationsLoader;
+export default FindingOptimizationsLoader;

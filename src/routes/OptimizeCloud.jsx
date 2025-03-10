@@ -25,32 +25,24 @@ export function OptimizeCloud() {
       title: 'Azure',
 
       icon: VscAzure,
-      onClick: () => handleRouteSteps('/optimize-sign-to-cloud'),
+      onClick: () => handleRouteSteps('/dashboard/optimize-sign-to-cloud'),
     },
     {
       title: 'AWS',
 
       icon: FaAws,
-      onClick: () => handleRouteSteps('/optimize-sign-to-cloud'),
+      onClick: () => handleRouteSteps('/dashboard/optimize-sign-to-cloud'),
     },
     {
       title: 'Google Cloud',
 
       icon: SiGooglecloud,
-      onClick: () => handleRouteSteps('/optimize-sign-to-cloud'),
+      onClick: () => handleRouteSteps('/dashboard/optimize-sign-to-cloud'),
     },
   ];
 
   return (
-    <PageContainer
-    // customSx={{
-    //   minHeight: '80vh',
-    //   display: 'flex',
-    //   flexDirection: 'column',
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    // }}
-    >
+    <PageContainer>
       <DashboardHeader
         // title="Getting Started"
         // subtitle="Welcome back, Ally"

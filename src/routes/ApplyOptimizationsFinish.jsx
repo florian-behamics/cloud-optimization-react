@@ -80,7 +80,7 @@ export const ApplyOptimizationsFinish = () => {
           {/* View Details Button */}
           <Box sx={{ mt: 2, textAlign: 'right' }}>
             <Button
-              onClick={() => navigate('/applied-optimization-report')}
+              onClick={() => navigate('/dashboard/applied-optimization-report')}
               variant="contained"
               color="primary"
             >

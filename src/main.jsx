@@ -27,7 +27,7 @@ import { CreatingCloud } from './routes/CreatingCloud';
 import { CloudTemplateOutput } from './routes/CloudTemplateOutput';
 import { OptimizeCloud } from './routes/OptimizeCloud';
 import { OptimizeSignToCloud } from './routes/OptimizeSignToCloud';
-import { FindingOptimisationsLoader } from './routes/FindingOptimizationsLoader';
+import { FindingOptimizationsLoader } from './routes/FindingOptimizationsLoader';
 import { CostAnalysis } from './routes/CostAnalysis';
 import OptimizationResultReport from './routes/OptimizationResultReport';
 import ApplyOptimimizationsLoader from './routes/ApplyOptimizationsLoader';
@@ -101,8 +101,8 @@ export const ALL_ROUTES = [
         element: <CreatingCloud />,
       },
       {
-        path: 'finding-optimisations',
-        element: <FindingOptimisationsLoader />,
+        path: 'finding-optimizations',
+        element: <FindingOptimizationsLoader />,
       },
       {
         path: 'apply-optimizations',
