@@ -295,7 +295,7 @@ export function Sidebar() {
               icon={<IoAnalyticsOutline size={ICON_SIZE} />}
             />
             <SidebarItem
-              href="/dashboard/speakers"
+              href="/dashboard/monitor-vms"
               title="Monitor"
               icon={<MdOutlineMonitor size={ICON_SIZE} />}
             />
