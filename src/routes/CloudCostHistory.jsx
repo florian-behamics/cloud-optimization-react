@@ -6,16 +6,18 @@ import {
   Box,
   Paper,
   Button,
-  Container,
+  Stack,
   Grid,
   Tabs,
   Tab,
+  Divider,
 } from '@mui/material';
 import { PageContainer } from '../components/PageContainer';
 import { useNavigate } from 'react-router-dom';
 import { formatAbbreviatedNumber, formatShortDate } from '../core/formatters';
 import ApplyConfigurationsOptimizationModal from '../components/ApplyConfigurationsOptimizationModal';
 import { SimpleLineChart } from '../components/SimpleLineChart';
+import { DashboardHeader } from '../components/DashboardHeader';
 
 const historyData = [
   {
@@ -44,10 +46,36 @@ const historyData = [
   },
 ];
 
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box>{children}</Box>}
+    </div>
+  );
+}
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
 export const CloudCostHistory = () => {
   const navigate = useNavigate();
   const [tabValue, setTabValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   const [openModal, setOpenModal] = useState(false);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const COMMON_X_CONFIG = {
     id: 'categories',
@@ -68,33 +96,15 @@ export const CloudCostHistory = () => {
 
   return (
     <PageContainer>
-      <Container maxWidth="lg" sx={{ mt: 3 }}>
-        {/* Navbar */}
-        <AppBar
-          position="static"
-          color="white"
-          elevation={1}
-          sx={{ borderRadius: 3, mt: 1, width: '100%', backgroundColor: 'white' }}
-        >
-          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
-              Cloud Cost History
-            </Typography>
-            <Typography sx={{ fontWeight: 400, color: 'secondary.main' }}>
-              Last Optimization: 23/02/2025
-            </Typography>
-          </Toolbar>
-          <Tabs
-            value={tabValue}
-            onChange={(event, newValue) => setTabValue(newValue)}
-            indicatorColor="primary"
-            textColor="primary"
-            sx={{ ml: 3, mb: 1 }}
-          >
-            <Tab label="Overview" />
-            <Tab label="Others..." />
-          </Tabs>
-        </AppBar>
+      <DashboardHeader title="Cloud Cost Analysis" />
+      <Stack>
+        <Tabs value={value} onChange={handleChange}>
+          <Tab label="Overview" {...a11yProps(0)} />
+          <Tab label="Others..." {...a11yProps(1)} />
+        </Tabs>
+        <Divider />
+      </Stack>
+      <Box>
         <Paper sx={{ mt: 4, p: 3, display: 'flex', justifyContent: 'center' }}>
           <Box sx={{ width: '100%', height: 200 }}>
             <SimpleLineChart
@@ -178,7 +188,7 @@ export const CloudCostHistory = () => {
             </Box>
           ))}
         </Paper>
-      </Container>
+      </Box>
       <ApplyConfigurationsOptimizationModal open={openModal} onClose={() => setOpenModal(false)} />
     </PageContainer>
   );

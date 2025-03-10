@@ -132,7 +132,7 @@ export const CostAnalysis = () => {
                     variant="contained"
                     color="primary"
                     sx={{ mt: 2, py: 1, fontSize: '0.8rem', width: '160px' }}
-                    onClick={() => navigate('/optimization-result-report')}
+                    onClick={() => navigate('/dashboard/optimization-result-report')}
                   >
                     View Result Report
                   </Button>
@@ -210,7 +210,7 @@ export const CostAnalysis = () => {
               Apply Optimizations
             </Button>
             <Button
-              onClick={() => navigate('/optimization-result-report')}
+              onClick={() => navigate('/dashboard/optimization-result-report')}
               variant="contained"
               color="primary"
               sx={{ fontSize: '0.8rem', py: 1 }}

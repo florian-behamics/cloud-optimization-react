@@ -46,7 +46,7 @@ export const SingleMonitorVm = (props) => {
       />
       <Divider orientation="horizontal" flexItem />
       {/* <Container maxWidth="lg" sx={{ mt: 4 }}> */}
-      <Box display="flex" justifyContent="space-between">
+      <Box display="flex" justifyContent="space-between" sx={{ mt: 4 }}>
         <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, fontSize: 32 }}>
           Jenkins VM
         </Typography>

@@ -45,7 +45,7 @@ export const MonitorVms = (props) => {
         actions={<Stack spacing={1} direction="row"></Stack>}
       />
       <Divider orientation="horizontal" flexItem />
-      <Container maxWidth="lg" sx={{ mt: 4 }}>
+      <Box sx={{ mt: 4 }}>
         <Box display="flex" justifyContent="space-between">
           <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, fontSize: 32 }}>
             39 VMs
@@ -213,7 +213,7 @@ export const MonitorVms = (props) => {
             </Button>
           </Box>
         </Paper>
-      </Container>
+      </Box>
     </PageContainer>
   );
 };

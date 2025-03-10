@@ -44,47 +44,8 @@ export const ALL_ROUTES = [
   },
 
   {
-    path: '/getting-started/questions',
-    element: <GettingStartedQuestions />,
-  },
-
-  {
-    path: '/optimize-sign-to-cloud',
-    element: <OptimizeSignToCloud />,
-  },
-
-  {
-    path: '/generated-specs',
-    element: <GeneratedSpecs />,
-  },
-  {
-    path: '/creating-cloud',
-    element: <CreatingCloud />,
-  },
-  {
-    path: '/finding-optimisations',
-    element: <FindingOptimisationsLoader />,
-  },
-  {
-    path: '/apply-optimizations',
-    element: <ApplyOptimimizationsLoader />,
-  },
-  {
-    path: '/applied-optimization-report',
-    element: <AppliedOptimizationReport />,
-  },
-
-  {
-    path: '/cloud-cost-history',
-    element: <CloudCostHistory />,
-  },
-  {
     path: '/settings',
     element: <Settings />,
-  },
-  {
-    path: '/apply-optimizations-finish',
-    element: <ApplyOptimizationsFinish />,
   },
 
   {
@@ -114,6 +75,42 @@ export const ALL_ROUTES = [
       {
         path: 'getting-started',
         element: <GettingStarted />,
+      },
+      {
+        path: 'getting-started/questions',
+        element: <GettingStartedQuestions />,
+      },
+      {
+        path: 'optimize-sign-to-cloud',
+        element: <OptimizeSignToCloud />,
+      },
+      {
+        path: 'apply-optimizations-finish',
+        element: <ApplyOptimizationsFinish />,
+      },
+      {
+        path: 'cloud-cost-history',
+        element: <CloudCostHistory />,
+      },
+      {
+        path: 'generated-specs',
+        element: <GeneratedSpecs />,
+      },
+      {
+        path: 'creating-cloud',
+        element: <CreatingCloud />,
+      },
+      {
+        path: 'finding-optimisations',
+        element: <FindingOptimisationsLoader />,
+      },
+      {
+        path: 'apply-optimizations',
+        element: <ApplyOptimimizationsLoader />,
+      },
+      {
+        path: 'applied-optimization-report',
+        element: <AppliedOptimizationReport />,
       },
       {
         path: 'optimize-cloud',
