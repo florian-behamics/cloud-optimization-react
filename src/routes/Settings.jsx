@@ -22,6 +22,8 @@ import {
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
+  Stack,
+  Divider,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -30,6 +32,7 @@ import { useNavigate } from 'react-router-dom';
 import { formatAbbreviatedNumber, formatShortDate } from '../core/formatters';
 import ApplyConfigurationsOptimizationModal from '../components/ApplyConfigurationsOptimizationModal';
 import { SimpleLineChart } from '../components/SimpleLineChart';
+import { DashboardHeader } from '../components/DashboardHeader';
 
 const historyData = [
   {
@@ -58,14 +61,40 @@ const historyData = [
   },
 ];
 
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box>{children}</Box>}
+    </div>
+  );
+}
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
 export const Settings = () => {
   const navigate = useNavigate();
+  const [value, setValue] = useState(0);
   const [tabValue, setTabValue] = React.useState(0);
   const [openModal, setOpenModal] = useState(false);
   const [costAuditEnabled, setCostAuditEnabled] = useState(true);
   const [auditFrequency, setAuditFrequency] = useState('weekly');
   const [newEmail, setNewEmail] = useState('');
   const [emailList, setEmailList] = useState(['admin@example.com', 'finance@example.com']);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const handleAddEmail = () => {
     if (newEmail && !emailList.includes(newEmail)) {
@@ -97,30 +126,16 @@ export const Settings = () => {
 
   return (
     <PageContainer>
-      <Container maxWidth="lg" sx={{ mt: 3 }}>
+      <DashboardHeader title="Settings" />
+      <Stack>
+        <Tabs value={value} onChange={handleChange}>
+          <Tab label="Overview" {...a11yProps(0)} />
+          <Tab label="Others..." {...a11yProps(1)} />
+        </Tabs>
+        <Divider />
+      </Stack>
+      <Box>
         {/* Navbar */}
-        <AppBar
-          position="static"
-          color="white"
-          elevation={1}
-          sx={{ borderRadius: 3, mt: 1, width: '100%', backgroundColor: 'white' }}
-        >
-          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
-              Settings
-            </Typography>
-          </Toolbar>
-          <Tabs
-            value={tabValue}
-            onChange={(event, newValue) => setTabValue(newValue)}
-            indicatorColor="primary"
-            textColor="primary"
-            sx={{ ml: 3, mb: 1 }}
-          >
-            <Tab label="Overview" />
-            <Tab label="Others..." />
-          </Tabs>
-        </AppBar>
 
         {/* Settings Section */}
         <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
@@ -195,7 +210,7 @@ export const Settings = () => {
         </Paper>
 
         {/* History Table */}
-      </Container>
+      </Box>
       <ApplyConfigurationsOptimizationModal open={openModal} onClose={() => setOpenModal(false)} />
     </PageContainer>
   );

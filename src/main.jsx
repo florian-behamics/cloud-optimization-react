@@ -44,11 +44,6 @@ export const ALL_ROUTES = [
   },
 
   {
-    path: '/settings',
-    element: <Settings />,
-  },
-
-  {
     path: '/landing',
     element: <Landing />,
   },
@@ -139,6 +134,10 @@ export const ALL_ROUTES = [
       {
         path: 'cloud-template-output',
         element: <CloudTemplateOutput />,
+      },
+      {
+        path: 'settings',
+        element: <Settings />,
       },
       {
         path: 'home',

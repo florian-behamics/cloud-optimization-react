@@ -129,7 +129,7 @@ export const SingleMonitorVm = (props) => {
       </Box>
 
       {/* Optimizations Found */}
-      <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
+      <Paper sx={{ p: 3, mt: 3, borderRadius: 2 }}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <Typography variant="h6" sx={{ fontWeight: 600 }}>

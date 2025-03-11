@@ -290,7 +290,7 @@ export function Sidebar() {
               icon={<TbHome size={ICON_SIZE} />}
             />
             <SidebarItem
-              href="/dashboard/events"
+              href="/dashboard/cost-analysis"
               title="Cost Analysis"
               icon={<IoAnalyticsOutline size={ICON_SIZE} />}
             />
@@ -342,7 +342,7 @@ export function Sidebar() {
             }}
           >
             <SidebarItem
-              href="/changelog"
+              href="/dashboard/settings"
               title="Settings"
               icon={<TbSettings size={ICON_SIZE} />}
             />
