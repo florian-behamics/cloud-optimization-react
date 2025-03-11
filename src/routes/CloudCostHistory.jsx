@@ -18,6 +18,8 @@ import { formatAbbreviatedNumber, formatShortDate } from '../core/formatters';
 import ApplyConfigurationsOptimizationModal from '../components/ApplyConfigurationsOptimizationModal';
 import { SimpleLineChart } from '../components/SimpleLineChart';
 import { DashboardHeader } from '../components/DashboardHeader';
+import { ChartCard } from '../components/ChartCard';
+import CloudCostTable from '../components/CloudCostTable';
 
 const historyData = [
   {
@@ -96,7 +98,7 @@ export const CloudCostHistory = () => {
 
   return (
     <PageContainer>
-      <DashboardHeader title="Cloud Cost Analysis" />
+      <DashboardHeader title="Cloud Cost History" />
       <Stack>
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Overview" {...a11yProps(0)} />
@@ -105,43 +107,43 @@ export const CloudCostHistory = () => {
         <Divider />
       </Stack>
       <Box>
-        <Paper sx={{ mt: 4, p: 3, display: 'flex', justifyContent: 'center' }}>
-          <Box sx={{ width: '100%', height: 200 }}>
+        <Box sx={{ mt: 4 }}>
+          <ChartCard title="RAM Usage" description="Average RAM Usage %">
             <SimpleLineChart
-              dataset={MINI_TIMESERIES}
+              dataset={MINI_TIMESERIES2}
+              yAxis={[
+                {
+                  valueFormatter: (value) => `${value}%`,
+                },
+              ]}
               xAxis={[
                 {
                   ...COMMON_X_CONFIG,
                   valueFormatter: formatShortDate,
-                  tickNumber: 7,
+                  tickNumber: 2,
                   tickLabelInterval: 'preserveStartEnd',
-                },
-              ]}
-              yAxis={[
-                {
-                  tickValues: [0, 500, 1000],
-                  valueFormatter: (value) => `$${value}`,
                 },
               ]}
               series={[
                 {
                   dataKey: 'value',
-                  valueFormatter: (value) => (value ? `$${formatAbbreviatedNumber(value)}` : ''),
+                  valueFormatter: (value) => (value ? `${value}%` : ''),
                   curve: 'linear',
-                  label: 'CPU Usage',
+                  label: 'RAM Usage',
                   // area: true,
-                  // stroke: '#1976d2',
-                  stroke: '#ADD8E6',
-                  // color: '#ADD8E6',
-                  // fill: '#FF0000',
                 },
               ]}
             />
-          </Box>
-        </Paper>
+          </ChartCard>
+        </Box>
+        <Typography variant="h6" sx={{ fontWeight: 500, mt: 4 }}>
+          Optimization History
+        </Typography>
+
+        <CloudCostTable />
 
         {/* History Table */}
-        <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
+        {/* <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
           <Typography variant="h6" sx={{ fontWeight: 600, mb: 6 }}>
             Optimization History
           </Typography>
@@ -187,13 +189,13 @@ export const CloudCostHistory = () => {
               </Box>
             </Box>
           ))}
-        </Paper>
+        </Paper> */}
       </Box>
       <ApplyConfigurationsOptimizationModal open={openModal} onClose={() => setOpenModal(false)} />
     </PageContainer>
   );
 };
-const MINI_TIMESERIES = [
+const MINI_TIMESERIES2 = [
   { date: '2021-01-01', value: 1210 },
   { date: '2021-01-02', value: 980 },
   { date: '2021-01-03', value: 1400 },
