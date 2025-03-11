@@ -19,6 +19,7 @@ import { Logo } from './Logo';
 import { FrameworkLink } from '../framework/FrameworkLink';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api/auth';
+import { validateLoginForm } from '../utils/validation';
 // auth form with 3rd party integrations included
 export function LoginForm() {
   const [email, setEmail] = React.useState('');
@@ -29,8 +30,16 @@ export function LoginForm() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
     setLoading(true);
     setError(null);
+
+    const errors = validateLoginForm(email, password);
+    if (Object.keys(errors).length > 0) {
+      setError(errors);
+      setLoading(false);
+      return;
+    }
 
     try {
       const userData = { email, password };
@@ -127,6 +136,11 @@ export function LoginForm() {
               autoComplete="email"
             />
           </FormControl>
+          {error?.email && (
+            <Typography color="error" variant="body2" sx={{ color: 'red' }}>
+              {error.email}
+            </Typography>
+          )}
           <FormControl>
             <FormLabel>Password</FormLabel>
             <FilledInput
@@ -146,6 +160,16 @@ export function LoginForm() {
               }
             />
           </FormControl>
+          {error?.password && (
+            <Typography color="error" variant="body2">
+              {error.password}
+            </Typography>
+          )}
+          {error?.api && (
+            <Typography color="error" variant="body2">
+              {error.api}
+            </Typography>
+          )}
           <Box
             sx={{
               display: 'flex',
