@@ -140,7 +140,7 @@ export function CloudProviderComparison() {
                     <Button
                       variant="outlined"
                       color="secondary"
-                      onClick={() => navigate('/generated-specs')}
+                      onClick={() => navigate('/dashboard/generated-specs')}
                     >
                       See Generated Specs
                     </Button>

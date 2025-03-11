@@ -36,7 +36,7 @@ const ApplyConfigurationsModal = ({ open, onClose }) => {
           Cancel
         </Button>
         <Button
-          onClick={() => navigate('/creating-cloud')}
+          onClick={() => navigate('/dashboard/creating-cloud')}
           variant="contained"
           sx={{
             bgcolor: 'primary.main',

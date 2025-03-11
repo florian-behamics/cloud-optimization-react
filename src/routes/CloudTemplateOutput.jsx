@@ -107,7 +107,7 @@ export const CloudTemplateOutput = () => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/dashboard/monitor-vms')}
             sx={{
               display: { xs: 'none', md: 'flex' },
             }}
