@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './TableTest.css';
+import styles from './OptimizationTable.module.css';
 import { Button } from '@mui/material';
 
 const CloudCostTable = () => {

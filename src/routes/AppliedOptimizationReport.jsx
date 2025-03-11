@@ -19,7 +19,7 @@ import { TbPlus } from 'react-icons/tb';
 import ApplyConfigurationsOptimizationModal from '../components/ApplyConfigurationsOptimizationModal';
 import ExportOptimizationReportModal from '../components/ExportOptimizationReportModal';
 import { DashboardHeader } from '../components/DashboardHeader';
-
+import AppliedOptimizationTable from '../components/AppliedOptimizationTable';
 export const AppliedOptimizationReport = () => {
   const [expanded, setExpanded] = useState({});
   const [openModal, setOpenModal] = useState(false);
@@ -87,7 +87,7 @@ export const AppliedOptimizationReport = () => {
         }
       />
       <Divider orientation="horizontal" flexItem />
-      <Box>
+      {/* <Box>
         <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
           <Typography variant="h6" sx={{ fontWeight: 600, mb: 6 }}>
             Optimizations Found
@@ -144,6 +144,21 @@ export const AppliedOptimizationReport = () => {
             <Typography sx={{ fontWeight: 600, fontSize: 17 }}>$20000/mo to $14000/mo</Typography>
           </Box>
         </Paper>
+      </Box> */}
+      <AppliedOptimizationTable />
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            navigate('/dashboard/single-monitor-vm');
+          }}
+          sx={{
+            display: { xs: 'none', md: 'flex' },
+          }}
+        >
+          Monitor
+        </Button>
       </Box>
       <ApplyConfigurationsOptimizationModal open={openModal} onClose={() => setOpenModal(false)} />
       <ExportOptimizationReportModal

@@ -27,7 +27,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ApplyConfigurationsOptimizationModal from '../components/ApplyConfigurationsOptimizationModal';
 import ExportOptimizationReportModal from '../components/ExportOptimizationReportModal';
 import { DashboardHeader } from '../components/DashboardHeader';
-import TableTest from '../components/OptimizationTable';
+import OptimizationTable from '../components/OptimizationTable';
 
 export const OptimizationResultReport = () => {
   const navigate = useNavigate();
@@ -101,12 +101,24 @@ export const OptimizationResultReport = () => {
       />
       <Divider orientation="horizontal" flexItem />
 
-      <TableTest />
-      <Box sx={{ mt: 3, textAlign: 'right' }}>
-        <Button onClick={() => setOpenModal(true)} variant="contained" color="primary">
+      <OptimizationTable />
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setOpenModal(true)}
+          sx={{
+            display: { xs: 'none', md: 'flex' },
+          }}
+        >
           Apply Optimizations
         </Button>
       </Box>
+      {/* <Box sx={{ mt: 3, textAlign: 'right' }}>
+        <Button onClick={() => setOpenModal(true)} variant="contained" color="primary">
+          Apply Optimizations
+        </Button>
+      </Box> */}
 
       <ApplyConfigurationsOptimizationModal open={openModal} onClose={() => setOpenModal(false)} />
       <ExportOptimizationReportModal

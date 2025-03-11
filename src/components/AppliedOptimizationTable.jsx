@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Box, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import styles from './OptimizationTable.module.css';
+import './ApplyOptimizationTable.css';
 
-const OptimizationTable = () => {
+const AppliedOptimizationTable = () => {
   const [expandedRow, setExpandedRow] = useState(null);
 
   const navigate = useNavigate();
@@ -83,18 +83,16 @@ const OptimizationTable = () => {
   };
 
   return (
-    <div className={styles['table-container']}>
-      <div className={styles['table-wrapper']}>
-        <table className={styles.table}>
-          <thead className={styles.thead}>
+    <div className="table-container">
+      <div className="table-wrapper">
+        <table>
+          <thead>
             <tr style={{ color: '#5f5d6e', fontSize: '14px' }}>
-              <th className={styles.th} style={{ width: '200px' }}>
-                Virtual Machines
-              </th>
-              <th className={styles.th}>Current VM</th>
-              <th className={styles.th}>Optimized VM</th>
-              <th className={styles.th}>Savings%</th>
-              <th className={styles.th}></th>
+              <th style={{ width: '200px' }}>Virtual Machines</th>
+              <th>Current VM</th>
+              <th>Optimized/Migrated VM</th>
+              <th>Savings%</th>
+              {/* <th></th> */}
             </tr>
           </thead>
           <tbody>
@@ -107,20 +105,17 @@ const OptimizationTable = () => {
                       <tr>
                         {vmIndex === 0 ? (
                           <td
-                            className={styles['category-cell']}
+                            className="category-cell"
                             rowSpan={category.vms.length + expandedCount}
                           >
                             {category.category}
                           </td>
                         ) : null}
-                        <td className={styles.td}>{vm.currentVM}</td>
-                        <td className={styles.td}>{vm.optimizedVM}</td>
-                        <td className={`${styles.td} ${styles.savings}`}>{vm.savings}</td>
-                        <td className={styles.td}>
-                          <button
-                            className={styles['action-button']}
-                            onClick={() => toggleRow(vm.name)}
-                          >
+                        <td>{vm.currentVM}</td>
+                        <td>{vm.optimizedVM}</td>
+                        <td className="savings">{vm.savings}</td>
+                        {/* <td>
+                          <button className="action-button" onClick={() => toggleRow(vm.name)}>
                             <ExpandMoreIcon
                               sx={{
                                 transform:
@@ -129,22 +124,23 @@ const OptimizationTable = () => {
                               }}
                             />
                           </button>
-                        </td>
+                        </td> */}
                       </tr>
-                      {expandedRow === vm.name && (
-                        <tr className={styles['details-row']}>
+                      {/* {expandedRow === vm.name && (
+                        <tr className="details-row">
                           <td
                             colSpan={4}
-                            className={styles['details-cell']}
+                            className="details-cell expanded"
                             style={{ backgroundColor: '#f5f5f5' }}
                           >
                             <div
-                              className={styles['details-content']}
+                              className="details-content"
                               style={{
                                 display: 'flex',
                                 flexDirection: 'row',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
+                                padding: '10px',
                                 borderRadius: '5px',
                                 transition: 'opacity 0.3s ease',
                                 opacity: expandedRow === vm.name ? 1 : 0,
@@ -158,22 +154,11 @@ const OptimizationTable = () => {
                                 {vm.reason}
                               </Typography>
 
-                              <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={() => {
-                                  navigate('/dashboard/single-monitor-vm');
-                                }}
-                                sx={{
-                                  display: { xs: 'none', md: 'flex' },
-                                }}
-                              >
-                                Monitor
-                              </Button>
+                      
                             </div>
                           </td>
                         </tr>
-                      )}
+                      )} */}
                     </React.Fragment>
                   ))}
                 </React.Fragment>
@@ -186,4 +171,4 @@ const OptimizationTable = () => {
   );
 };
 
-export default OptimizationTable;
+export default AppliedOptimizationTable;
