@@ -90,6 +90,9 @@ export function RegisterForm() {
         }}
       >
         <FormLabel sx={visuallyHidden}>First Name</FormLabel>
+        {error?.name && (
+          <div style={{ color: 'red', fontSize: '14px', height: '1px' }}>{error.name}</div>
+        )}
         <FilledInput
           placeholder="First Name"
           type="text"
@@ -98,12 +101,11 @@ export function RegisterForm() {
           onChange={(e) => setName(e.target.value)}
           autoComplete="given-name"
         />
-        {error?.name && (
-          <Typography color="error" variant="body2">
-            {error.name}
-          </Typography>
-        )}
+
         <FormLabel sx={visuallyHidden}>Last Name</FormLabel>
+        {error?.lastName && (
+          <div style={{ color: 'red', fontSize: '14px', height: '1px' }}>{error.lastName}</div>
+        )}
         <FilledInput
           placeholder="Last Name"
           type="text"
@@ -112,12 +114,10 @@ export function RegisterForm() {
           onChange={(e) => setLastName(e.target.value)}
           autoComplete="family-name"
         />
-        {error?.lastName && (
-          <Typography color="error" variant="body2">
-            {error.lastName}
-          </Typography>
-        )}
         <FormLabel sx={visuallyHidden}>Email</FormLabel>
+        {error?.email && (
+          <div style={{ color: 'red', fontSize: '14px', height: '1px' }}>{error.email}</div>
+        )}
         <FilledInput
           placeholder="E-mail"
           type="email"
@@ -126,12 +126,10 @@ export function RegisterForm() {
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
         />
-        {error?.email && (
-          <Typography color="error" variant="body2">
-            {error.email}
-          </Typography>
-        )}
         <FormLabel sx={visuallyHidden}>Password</FormLabel>
+        {error?.password && (
+          <div style={{ color: 'red', fontSize: '14px', height: '1px' }}>{error.password}</div>
+        )}
         <FilledInput
           placeholder="Password"
           type="password"
@@ -139,16 +137,7 @@ export function RegisterForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {error?.password && (
-          <Typography color="error" variant="body2">
-            {error.password}
-          </Typography>
-        )}
-        {error && (
-          <Typography color="error" variant="body2">
-            {error}
-          </Typography>
-        )}
+        {error && <div style={{ color: 'red', fontSize: '14px', height: '1px' }}>{error}</div>}
         <Button variant="contained" size="large" type="submit" disabled={loading}>
           {loading ? 'Signing Up...' : 'Sign Up'}
         </Button>

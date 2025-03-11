@@ -135,12 +135,8 @@ export function LoginForm() {
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
             />
+            {error?.email && <div style={{ color: 'red', fontSize: '14px' }}>{error.email}</div>}
           </FormControl>
-          {error?.email && (
-            <Typography color="error" variant="body2" sx={{ color: 'red' }}>
-              {error.email}
-            </Typography>
-          )}
           <FormControl>
             <FormLabel>Password</FormLabel>
             <FilledInput
@@ -159,17 +155,11 @@ export function LoginForm() {
                 </IconButton>
               }
             />
+            {error?.password && (
+              <div style={{ color: 'red', fontSize: '14px' }}>{error.password}</div>
+            )}
           </FormControl>
-          {error?.password && (
-            <Typography color="error" variant="body2">
-              {error.password}
-            </Typography>
-          )}
-          {error?.api && (
-            <Typography color="error" variant="body2">
-              {error.api}
-            </Typography>
-          )}
+          {error?.api && <div style={{ color: 'red', fontSize: '14px' }}>{error.api}</div>}
           <Box
             sx={{
               display: 'flex',
