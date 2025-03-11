@@ -27,7 +27,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ApplyConfigurationsOptimizationModal from '../components/ApplyConfigurationsOptimizationModal';
 import ExportOptimizationReportModal from '../components/ExportOptimizationReportModal';
 import { DashboardHeader } from '../components/DashboardHeader';
-import TableTest from '../components/TableTest';
+import TableTest from '../components/OptimizationTable';
 
 export const OptimizationResultReport = () => {
   const navigate = useNavigate();

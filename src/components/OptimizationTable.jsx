@@ -4,7 +4,7 @@ import { Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import './TableTest.css';
 
-const TableTest = () => {
+const OptimizationTable = () => {
   const [expandedRow, setExpandedRow] = useState(null);
 
   const navigate = useNavigate();
@@ -182,4 +182,4 @@ const TableTest = () => {
   );
 };
 
-export default TableTest;
+export default OptimizationTable;
