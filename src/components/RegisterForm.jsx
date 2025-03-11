@@ -3,9 +3,10 @@ import { visuallyHidden } from '@mui/utils';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../api/auth';
+import { validateRegisterForm } from '../utils/validation';
 
 export function RegisterForm() {
-  const [firstName, setFirstName] = useState('');
+  const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,8 +20,15 @@ export function RegisterForm() {
     setLoading(true);
     setError(null);
 
+    const errors = validateRegisterForm(email, password, name, lastName);
+    if (Object.keys(errors).length > 0) {
+      setError(errors);
+      setLoading(false);
+      return;
+    }
+
     try {
-      const userData = { name: firstName, lastName, email, password };
+      const userData = { name, lastName, email, password };
       const response = await register(userData);
       console.log('Registration successful:', response);
       navigate('/login');
@@ -85,11 +93,16 @@ export function RegisterForm() {
         <FilledInput
           placeholder="First Name"
           type="text"
-          name="firstName"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           autoComplete="given-name"
         />
+        {error?.name && (
+          <Typography color="error" variant="body2">
+            {error.name}
+          </Typography>
+        )}
         <FormLabel sx={visuallyHidden}>Last Name</FormLabel>
         <FilledInput
           placeholder="Last Name"
@@ -99,6 +112,11 @@ export function RegisterForm() {
           onChange={(e) => setLastName(e.target.value)}
           autoComplete="family-name"
         />
+        {error?.lastName && (
+          <Typography color="error" variant="body2">
+            {error.lastName}
+          </Typography>
+        )}
         <FormLabel sx={visuallyHidden}>Email</FormLabel>
         <FilledInput
           placeholder="E-mail"
@@ -108,6 +126,11 @@ export function RegisterForm() {
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
         />
+        {error?.email && (
+          <Typography color="error" variant="body2">
+            {error.email}
+          </Typography>
+        )}
         <FormLabel sx={visuallyHidden}>Password</FormLabel>
         <FilledInput
           placeholder="Password"
@@ -116,6 +139,11 @@ export function RegisterForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {error?.password && (
+          <Typography color="error" variant="body2">
+            {error.password}
+          </Typography>
+        )}
         {error && (
           <Typography color="error" variant="body2">
             {error}
