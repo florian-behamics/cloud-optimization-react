@@ -3,7 +3,7 @@ import { Box, Typography, LinearProgress, Container, Fade } from '@mui/material'
 import { PageContainer } from '../components/PageContainer';
 import { useNavigate } from 'react-router-dom';
 
-export const FindingOptimizationsLoader = () => {
+export const DeployingCiCdLoader = () => {
   const [progress, setProgress] = useState(0);
   const [fadeIn, setFadeIn] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const FindingOptimizationsLoader = () => {
     }, 100);
 
     const redirectTimeout = setTimeout(() => {
-      navigate('/dashboard/cost-analysis'); // Redirect after 10s
+      navigate('/dashboard/cloud-template/deploy-app/ci-cd/finish'); // Redirect after 10s
     }, 11000);
 
     return () => {
@@ -51,7 +51,7 @@ export const FindingOptimizationsLoader = () => {
                 color: 'text.primary',
               }}
             >
-              Finding Optimizations...
+              Deploying your app...
             </Typography>
             <Typography variant="body1" sx={{ color: 'text.secondary', fontSize: '1.1rem' }}>
               It will be quick!
@@ -77,4 +77,4 @@ export const FindingOptimizationsLoader = () => {
   );
 };
 
-export default FindingOptimizationsLoader;
+export default DeployingCiCdLoader;

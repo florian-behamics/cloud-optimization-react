@@ -36,7 +36,7 @@ const ApplyConfigurationsOptimizationModal = ({ open, onClose }) => {
           Cancel
         </Button>
         <Button
-          onClick={() => navigate('/apply-optimizations')}
+          onClick={() => navigate('/dashboard/apply-optimizations')}
           variant="contained"
           sx={{
             bgcolor: 'primary.main',

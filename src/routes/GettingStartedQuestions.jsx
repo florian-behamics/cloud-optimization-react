@@ -135,7 +135,7 @@ export function GettingStartedQuestions() {
         setCurrentStep(currentStep + 1);
       } else {
         console.log('All questions answered', answers);
-        navigate('/cloud-provider-comparison');
+        navigate('/dashboard/cloud-provider-comparison');
       }
     }
   };

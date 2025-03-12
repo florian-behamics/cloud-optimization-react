@@ -1,26 +1,61 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Box, Paper, Button, Container } from '@mui/material';
+import React, { useState } from 'react';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  Paper,
+  Button,
+  Stack,
+  Divider,
+  Tabs,
+  Tab,
+} from '@mui/material';
 import { PageContainer } from '../components/PageContainer';
 import { useNavigate } from 'react-router-dom';
+import { DashboardHeader } from '../components/DashboardHeader';
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <Box>{children}</Box>}
+    </div>
+  );
+}
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 export const ApplyOptimizationsFinish = () => {
+  const [value, setValue] = useState(0);
   const navigate = useNavigate();
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <PageContainer>
-      <Container maxWidth="md" sx={{ mt: 10 }}>
+      <DashboardHeader title="Optimization Summary" />
+      <Stack>
+        <Tabs value={value} onChange={handleChange}>
+          <Tab label="Overview" {...a11yProps(0)} />
+          <Tab label="Others..." {...a11yProps(1)} />
+        </Tabs>
+        <Divider />
+      </Stack>
+      <Box>
         {/* Navbar */}
-        <AppBar
-          position="static"
-          color="white"
-          elevation={1}
-          sx={{ borderRadius: 3, backgroundColor: 'white' }}
-        >
-          <Toolbar>
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
-              Optimization Summary
-            </Typography>
-          </Toolbar>
-        </AppBar>
 
         {/* Summary Section */}
         <Paper elevation={2} sx={{ p: 3, mt: 3, borderRadius: 3 }}>
@@ -45,7 +80,7 @@ export const ApplyOptimizationsFinish = () => {
           {/* View Details Button */}
           <Box sx={{ mt: 2, textAlign: 'right' }}>
             <Button
-              onClick={() => navigate('/applied-optimization-report')}
+              onClick={() => navigate('/dashboard/applied-optimization-report')}
               variant="contained"
               color="primary"
             >
@@ -53,7 +88,7 @@ export const ApplyOptimizationsFinish = () => {
             </Button>
           </Box>
         </Paper>
-      </Container>
+      </Box>
     </PageContainer>
   );
 };

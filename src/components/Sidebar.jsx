@@ -261,7 +261,7 @@ export function Sidebar() {
             mt: 1.5,
           }}
         >
-          {/* <OrganizationSelector /> */}
+          <OrganizationSelector />
         </Box>
         <SidebarDivider />
         <Box
@@ -274,93 +274,37 @@ export function Sidebar() {
         >
           <List
             sx={{
-              pt: 0.5,
+              pt: -1,
               pb: 0,
             }}
           >
-            <Box
-              component="li"
-              sx={{
-                px: 1.5,
-                mb: 1.5,
-              }}
-            >
-              {/* <CommandBar /> */}
-            </Box>
             <SidebarItem
-              href="/dashboard/home"
+              href="/dashboard/getting-started"
               title="Getting Started"
               icon={<TbAd2 size={ICON_SIZE} />}
+              sx={{ mb: 2 }}
             />
             <SidebarItem
-              href="/dashboard/orders"
+              href="/dashboard/cloud-cost-history"
               title="Dashboard"
               icon={<TbHome size={ICON_SIZE} />}
             />
             <SidebarItem
-              href="/dashboard/events"
+              href="/dashboard/cost-analysis"
               title="Cost Analysis"
               icon={<IoAnalyticsOutline size={ICON_SIZE} />}
             />
             <SidebarItem
-              href="/dashboard/speakers"
+              href="/dashboard/monitor-vms"
               title="Monitor"
               icon={<MdOutlineMonitor size={ICON_SIZE} />}
-
-              //   rightAdornment={
-              //     <Box
-              //       sx={{
-              //         display: 'flex',
-              //         alignItems: 'center',
-              //         justifyContent: 'center',
-              //         fontSize: 'xs',
-              //         color: 'primary.50',
-              //         bgcolor: 'primary.600',
-              //         borderRadius: 999,
-              //         height: 18,
-              //         width: 18,
-              //       }}
-              //     >
-              //       4
-              //     </Box>
-              //   }
             />
             <SidebarItem
-              href="/changelog"
+              href="/dashboard/cloud-template-output"
               title="Cloud Templates"
               icon={<TbCloud size={ICON_SIZE} />}
             />
             <SidebarDivider />
-            {/* <SidebarItem
-              href="/dashboard/analytics"
-              title="Analytics"
-              icon={<TbChartDonut2 size={ICON_SIZE} />}
-            />
-            <SidebarItem href="/dashboard/charts" title="Charts" icon={<TbChartAreaLine />} />
-            <SidebarItem
-              href="#"
-              title="Experimental Features"
-              icon={<TbFlask2 />}
-              deemphasized={true}
-            /> */}
-            {/* <SidebarDivider /> */}
-            {/* <SidebarItem href="/#" title="Homepage" icon={<TbAd2 />} />
-            <SidebarItem href="/landing" title="Landing Page" icon={<TbWallpaper />} />
-            <SidebarItem href="/checkout" title="Checkout" icon={<TbShoppingCart />} />
-            <SidebarItem href="/login" title="3rd Party Authentication" icon={<TbLockAccess />} />
-            <SidebarItem href="/register" title="Magic Link Authentication" icon={<TbUnlink />} />
-            <SidebarItem
-              href="https://kit.uifoundations.com/components"
-              target="_blank"
-              title="Kit Components"
-              icon={<TbListDetails />}
-            />
-            <SidebarItem
-              href="https://docs.uifoundations.com"
-              target="_blank"
-              title="Docs"
-              icon={<TbBook />}
-            /> */}
           </List>
         </Box>
         <Box
@@ -398,7 +342,7 @@ export function Sidebar() {
             }}
           >
             <SidebarItem
-              href="/changelog"
+              href="/dashboard/settings"
               title="Settings"
               icon={<TbSettings size={ICON_SIZE} />}
             />

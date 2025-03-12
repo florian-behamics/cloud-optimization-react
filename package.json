@@ -20,6 +20,7 @@
     "@mui/x-date-pickers": "latest",
     "@mui/x-date-pickers-pro": "latest",
     "@reactour/tour": "^3.7.0",
+    "axios": "^1.8.2",
     "cmdk": "^1.0.0",
     "dayjs": "^1.11.11",
     "framer-motion": "^11.2.13",

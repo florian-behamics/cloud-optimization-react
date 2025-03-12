@@ -14,12 +14,15 @@ import {
 } from '@mui/material';
 import { PageContainer } from '../components/PageContainer';
 import { useNavigate } from 'react-router-dom';
+import { TbAlertTriangle, TbArrowRight, TbCheck, TbColorSwatch } from 'react-icons/tb';
 import { formatAbbreviatedNumber, formatShortDate } from '../core/formatters';
 import ApplyConfigurationsOptimizationModal from '../components/ApplyConfigurationsOptimizationModal';
 import { SimpleLineChart } from '../components/SimpleLineChart';
 import { DashboardHeader } from '../components/DashboardHeader';
 import { ChartCard } from '../components/ChartCard';
 import CloudCostTable from '../components/CloudCostTable';
+import { FrameworkLink } from '../framework/FrameworkLink';
+import DeploymentLogsTable from '../components/DeploymentLogsTable';
 
 const historyData = [
   {
@@ -69,7 +72,7 @@ function a11yProps(index) {
   };
 }
 
-export const CloudCostHistory = () => {
+export const AppDeployFinish = () => {
   const navigate = useNavigate();
   const [tabValue, setTabValue] = React.useState(0);
   const [value, setValue] = useState(0);
@@ -98,7 +101,7 @@ export const CloudCostHistory = () => {
 
   return (
     <PageContainer>
-      <DashboardHeader title="Cloud Cost History" />
+      <DashboardHeader title="App Deployment" />
       <Stack>
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Overview" {...a11yProps(0)} />
@@ -107,7 +110,64 @@ export const CloudCostHistory = () => {
         <Divider />
       </Stack>
       <Box>
-        <Box sx={{ mt: 4 }}>
+        <Box
+          id="home-alert"
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: 1,
+            fontSize: 'sm',
+            padding: 1.5,
+            border: (theme) => `1px dashed ${theme.palette.blue['400']}`,
+            backgroundColor: 'blue.50',
+            borderRadius: 2,
+            boxShadow: 1,
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: { xs: 'flex-start', md: 'center' },
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+              gap: 1,
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                padding: 1,
+                backgroundColor: 'blue.100',
+                borderRadius: 999,
+                color: 'blue.800',
+              }}
+            >
+              <TbCheck size={20} color="blue" />
+            </Box>
+            <Box
+              sx={{
+                width: '100%',
+              }}
+            >
+              App has been deployed successfully.
+            </Box>
+          </Box>
+          {/* <Button
+            color="secondary"
+            onClick={() => {
+              document.getElementById('home-alert')?.remove();
+            }}
+          >
+            Ignore
+          </Button> */}
+          <FrameworkLink to="/dashboard/monitor-vms">
+            <Button endIcon={<TbArrowRight />}>Monitor</Button>
+          </FrameworkLink>
+        </Box>
+        {/* <Box sx={{ mt: 4 }}>
           <ChartCard title="RAM Usage" description="Average RAM Usage %">
             <SimpleLineChart
               dataset={MINI_TIMESERIES2}
@@ -135,12 +195,12 @@ export const CloudCostHistory = () => {
               ]}
             />
           </ChartCard>
-        </Box>
+        </Box> */}
         <Typography variant="h6" sx={{ fontWeight: 500, mt: 4 }}>
-          Optimization History
+          Deployment Logs
         </Typography>
 
-        <CloudCostTable />
+        <DeploymentLogsTable />
 
         {/* History Table */}
         {/* <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
@@ -205,4 +265,4 @@ const MINI_TIMESERIES2 = [
   { date: '2021-01-07', value: 1010 },
 ];
 
-export default CloudCostHistory;
+export default AppDeployFinish;

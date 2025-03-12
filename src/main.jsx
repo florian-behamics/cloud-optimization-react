@@ -27,7 +27,7 @@ import { CreatingCloud } from './routes/CreatingCloud';
 import { CloudTemplateOutput } from './routes/CloudTemplateOutput';
 import { OptimizeCloud } from './routes/OptimizeCloud';
 import { OptimizeSignToCloud } from './routes/OptimizeSignToCloud';
-import { FindingOptimisationsLoader } from './routes/FindingOptimizationsLoader';
+import { FindingOptimizationsLoader } from './routes/FindingOptimizationsLoader';
 import { CostAnalysis } from './routes/CostAnalysis';
 import OptimizationResultReport from './routes/OptimizationResultReport';
 import ApplyOptimimizationsLoader from './routes/ApplyOptimizationsLoader';
@@ -37,83 +37,25 @@ import MonitorVms from './routes/MonitorVms';
 import SingleMonitorVm from './routes/SingleMonitorVm';
 import CloudCostHistory from './routes/CloudCostHistory';
 import Settings from './routes/Settings';
+import FirstQuestion from './routes/questions/FirstQuestion';
+import SecondQuestion from './routes/questions/SecondQuestion';
+import ThirdQuestion from './routes/questions/ThirdQuestion';
+import FourthQuestion from './routes/questions/FourthQuestion';
+import FifthQuestion from './routes/questions/FifthQuestion';
+import CloudTemplate from './routes/CloudTemplate';
+import CloudTemplateDetails from './routes/CloudTemplateDetails';
+import DeployApp from './routes/DeployApp';
+import ManuallyDeployApp from './routes/ManuallyDeployApp';
+import DeployingLoader from './routes/DeployingLoader';
+import AppDeployFinish from './routes/AppDeployFinish';
+import CiCdDeployApp from './routes/CiCdDeployApp';
+import AppDeployCiCdFinish from './routes/AppDeployCiCdFinish';
 export const ALL_ROUTES = [
   {
     path: '/',
     element: <Homepage />,
   },
-  {
-    path: '/getting-started',
-    element: <GettingStarted />,
-  },
-  {
-    path: '/getting-started/questions',
-    element: <GettingStartedQuestions />,
-  },
-  {
-    path: '/optimize-cloud',
-    element: <OptimizeCloud />,
-  },
-  {
-    path: '/optimize-sign-to-cloud',
-    element: <OptimizeSignToCloud />,
-  },
-  {
-    path: '/cloud-provider-comparison',
-    element: <CloudProviderComparison />,
-  },
-  {
-    path: '/generated-specs',
-    element: <GeneratedSpecs />,
-  },
-  {
-    path: '/creating-cloud',
-    element: <CreatingCloud />,
-  },
-  {
-    path: '/finding-optimisations',
-    element: <FindingOptimisationsLoader />,
-  },
-  {
-    path: '/apply-optimizations',
-    element: <ApplyOptimimizationsLoader />,
-  },
-  {
-    path: '/applied-optimization-report',
-    element: <AppliedOptimizationReport />,
-  },
-  {
-    path: '/monitor-vms',
-    element: <MonitorVms />,
-  },
-  {
-    path: '/single-monitor-vm',
-    element: <SingleMonitorVm />,
-  },
-  {
-    path: '/cost-analysis',
-    element: <CostAnalysis />,
-  },
-  {
-    path: '/cloud-cost-history',
-    element: <CloudCostHistory />,
-  },
-  {
-    path: '/settings',
-    element: <Settings />,
-  },
-  {
-    path: '/apply-optimizations-finish',
-    element: <ApplyOptimizationsFinish />,
-  },
-  {
-    path: '/optimization-result-report',
-    element: <OptimizationResultReport />,
-  },
-  {
-    path: '/cloud-template-output',
-    element: <CloudTemplateOutput />,
-  },
+
   {
     path: '/landing',
     element: <Landing />,
@@ -138,6 +80,130 @@ export const ALL_ROUTES = [
     path: '/dashboard',
     element: <DashboardLayout />,
     children: [
+      {
+        path: 'getting-started',
+        element: <GettingStarted />,
+      },
+      {
+        path: 'getting-started/questions',
+        element: <GettingStartedQuestions />,
+      },
+      {
+        path: 'getting-started/questions/first-question',
+        element: <FirstQuestion />,
+      },
+      {
+        path: 'getting-started/questions/second-question',
+        element: <SecondQuestion />,
+      },
+      {
+        path: 'getting-started/questions/third-question',
+        element: <ThirdQuestion />,
+      },
+      {
+        path: 'getting-started/questions/fourth-question',
+        element: <FourthQuestion />,
+      },
+      {
+        path: 'getting-started/questions/fifth-question',
+        element: <FifthQuestion />,
+      },
+      {
+        path: 'optimize-sign-to-cloud',
+        element: <OptimizeSignToCloud />,
+      },
+      {
+        path: 'apply-optimizations-finish',
+        element: <ApplyOptimizationsFinish />,
+      },
+      {
+        path: 'cloud-template',
+        element: <CloudTemplate />,
+      },
+      {
+        path: 'cloud-template/deploy-app',
+        element: <DeployApp />,
+      },
+      {
+        path: 'cloud-template/deploy-app/manual',
+        element: <ManuallyDeployApp />,
+      },
+      {
+        path: 'cloud-template/deploy-app/ci-cd',
+        element: <CiCdDeployApp />,
+      },
+      {
+        path: 'cloud-template/deploy-app/manual/finish',
+        element: <AppDeployFinish />,
+      },
+      {
+        path: 'cloud-template/deploy-app/ci-cd/finish',
+        element: <AppDeployCiCdFinish />,
+      },
+      {
+        path: 'cloud-template/deploy-app/deploying-loader',
+        element: <DeployingLoader />,
+      },
+      {
+        path: 'cloud-template/details',
+        element: <CloudTemplateDetails />,
+      },
+      {
+        path: 'cloud-cost-history',
+        element: <CloudCostHistory />,
+      },
+      {
+        path: 'generated-specs',
+        element: <GeneratedSpecs />,
+      },
+      {
+        path: 'creating-cloud',
+        element: <CreatingCloud />,
+      },
+      {
+        path: 'finding-optimizations',
+        element: <FindingOptimizationsLoader />,
+      },
+      {
+        path: 'apply-optimizations',
+        element: <ApplyOptimimizationsLoader />,
+      },
+      {
+        path: 'applied-optimization-report',
+        element: <AppliedOptimizationReport />,
+      },
+      {
+        path: 'optimize-cloud',
+        element: <OptimizeCloud />,
+      },
+      {
+        path: 'cost-analysis',
+        element: <CostAnalysis />,
+      },
+      {
+        path: 'monitor-vms',
+        element: <MonitorVms />,
+      },
+      {
+        path: 'single-monitor-vm',
+        element: <SingleMonitorVm />,
+      },
+      {
+        path: 'cloud-provider-comparison',
+        element: <CloudProviderComparison />,
+      },
+      {
+        path: 'optimization-result-report',
+        element: <OptimizationResultReport />,
+      },
+      {
+        path: 'cloud-template-output',
+        element: <CloudTemplateOutput />,
+      },
+      {
+        path: 'settings',
+        element: <Settings />,
+      },
       {
         path: 'home',
         element: <Home />,

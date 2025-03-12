@@ -7,6 +7,7 @@ import InitialTab from '../components/getting-started/InitialTab';
 import StepForm from '../components/getting-started/StepForm';
 import { useState } from 'react';
 import { TbInfoCircle, TbCloud, TbChartBar, TbColorSwatch } from 'react-icons/tb';
+import { GrDeploy } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 import { DashboardHeader } from '../components/DashboardHeader';
 import { ColorDot } from '../components/ColorDot';
@@ -17,7 +18,7 @@ import {
   ALL_RADIUS_SCALES_LIST,
 } from '../theme';
 
-export function GettingStarted() {
+export function DeployApp() {
   const navigate = useNavigate();
 
   const customizeDisclosure = useDisclosure({ provideAnchorEl: true });
@@ -28,17 +29,17 @@ export function GettingStarted() {
 
   const features = [
     {
-      title: 'No Code Cloud',
+      title: 'Deploy Manually',
       description:
-        'Using simple templates, create the most cost-effective cloud architecture automatically.',
-      icon: TbCloud,
-      onClick: () => handleRouteSteps('/dashboard/getting-started/questions/first-question'),
+        'Easily deploy your application using simple templates to build a cost-effective cloud architecture automatically.',
+      icon: GrDeploy,
+      onClick: () => handleRouteSteps('/dashboard/cloud-template/deploy-app/manual'),
     },
     {
-      title: 'Optimize Cloud',
-      description: 'Analyze cost reduction opportunities and run automations to reduce costs.',
-      icon: TbChartBar,
-      onClick: () => handleRouteSteps('/dashboard/optimize-cloud'),
+      title: 'Deploy with CI/CD',
+      description: 'Automate your app deployment while optimizing cloud costs effortlessly.',
+      icon: GrDeploy,
+      onClick: () => handleRouteSteps('/dashboard/cloud-template/deploy-app/ci-cd'),
     },
   ];
 
@@ -69,7 +70,7 @@ export function GettingStarted() {
                 isolation: 'isolate',
               }}
             >
-              Getting Started
+              Deploy your App
             </Typography>
 
             <Typography
@@ -80,8 +81,7 @@ export function GettingStarted() {
                 lineHeight: 1.75,
               }}
             >
-              Select the option that best fits your needs to begin optimizing your cloud
-              infrastructure and reducing costs effectively.
+              Easily deploy your application by selecting the option that best fits your needs.
             </Typography>
           </Box>
 
@@ -110,3 +110,5 @@ export function GettingStarted() {
     </PageContainer>
   );
 }
+
+export default DeployApp;

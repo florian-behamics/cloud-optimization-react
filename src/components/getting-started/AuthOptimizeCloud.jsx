@@ -1,12 +1,9 @@
 import { Box, Button, FilledInput, FormLabel, Link, Stack, Typography, Paper } from '@mui/material';
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { VscAzure } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
+
 export function AuthOptimizeCloud() {
-  const [email, setEmail] = React.useState('');
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
-  const [password, setPassword] = React.useState('');
   const handleLogin = async (email) => {
     // add login logic here
     console.log(email);
@@ -89,10 +86,12 @@ export function AuthOptimizeCloud() {
         </Paper>
 
         <Button
-          onClick={() => navigate('/finding-optimisations')}
           variant="contained"
-          size="large"
-          type="submit"
+          color="primary"
+          onClick={() => navigate('/dashboard/finding-optimizations')}
+          sx={{
+            display: { xs: 'none', md: 'flex' },
+          }}
         >
           Sign in...
         </Button>

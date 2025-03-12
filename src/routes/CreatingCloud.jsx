@@ -19,7 +19,7 @@ export const CreatingCloud = () => {
     }, 100);
 
     const redirectTimeout = setTimeout(() => {
-      navigate('/cloud-template-output'); // Redirect after 10s
+      navigate('/dashboard/cloud-template-output'); // Redirect after 10s
     }, 11000);
 
     return () => {

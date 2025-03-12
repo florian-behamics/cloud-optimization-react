@@ -19,7 +19,7 @@ export const ApplyOptimimizationsLoader = () => {
     }, 100);
 
     const redirectTimeout = setTimeout(() => {
-      navigate('/apply-optimizations-finish'); // Redirect after 10s
+      navigate('/dashboard/apply-optimizations-finish'); // Redirect after 10s
     }, 11000);
 
     return () => {

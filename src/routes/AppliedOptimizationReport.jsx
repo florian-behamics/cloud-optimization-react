@@ -6,6 +6,8 @@ import {
   Box,
   Paper,
   Button,
+  Divider,
+  Stack,
   Container,
   IconButton,
   Collapse,
@@ -13,9 +15,11 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { PageContainer } from '../components/PageContainer';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { TbPlus } from 'react-icons/tb';
 import ApplyConfigurationsOptimizationModal from '../components/ApplyConfigurationsOptimizationModal';
 import ExportOptimizationReportModal from '../components/ExportOptimizationReportModal';
-
+import { DashboardHeader } from '../components/DashboardHeader';
+import AppliedOptimizationTable from '../components/AppliedOptimizationTable';
 export const AppliedOptimizationReport = () => {
   const [expanded, setExpanded] = useState({});
   const [openModal, setOpenModal] = useState(false);
@@ -61,23 +65,29 @@ export const AppliedOptimizationReport = () => {
 
   return (
     <PageContainer>
-      <Container maxWidth="lg" sx={{ mt: 14 }}>
-        <AppBar
-          position="static"
-          color="white"
-          elevation={1}
-          sx={{ borderRadius: 3, backgroundColor: 'white' }}
-        >
-          <Toolbar sx={{ justifyContent: 'space-between' }}>
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
-              Applied Optimization Report
-            </Typography>
-            <Button onClick={() => setOpenExportModal(true)} variant="contained" color="primary">
+      <DashboardHeader
+        title="Applied Optimization Report"
+        // subtitle="Welcome back, Ally"
+        actions={
+          <Stack spacing={1} direction="row">
+            <Button
+              variant="contained"
+              color="primary"
+              startIcon={<TbPlus />}
+              onClick={() => {
+                setOpenExportModal(true);
+              }}
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+              }}
+            >
               Export
             </Button>
-          </Toolbar>
-        </AppBar>
-
+          </Stack>
+        }
+      />
+      <Divider orientation="horizontal" flexItem />
+      {/* <Box>
         <Paper elevation={2} sx={{ p: 3, mt: 3 }}>
           <Typography variant="h6" sx={{ fontWeight: 600, mb: 6 }}>
             Optimizations Found
@@ -123,14 +133,33 @@ export const AppliedOptimizationReport = () => {
           <Box sx={{ mt: 3 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Typography sx={{ fontWeight: 700, fontSize: 22 }}>You saved 30%</Typography>
-              <Button onClick={() => navigate('/monitor-vms')} variant="contained" color="primary">
+              <Button
+                onClick={() => navigate('/dashboard/monitor-vms')}
+                variant="contained"
+                color="primary"
+              >
                 Monitor
               </Button>
             </Box>
             <Typography sx={{ fontWeight: 600, fontSize: 17 }}>$20000/mo to $14000/mo</Typography>
           </Box>
         </Paper>
-      </Container>
+      </Box> */}
+      <AppliedOptimizationTable />
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            navigate('/dashboard/single-monitor-vm');
+          }}
+          sx={{
+            display: { xs: 'none', md: 'flex' },
+          }}
+        >
+          Monitor
+        </Button>
+      </Box>
       <ApplyConfigurationsOptimizationModal open={openModal} onClose={() => setOpenModal(false)} />
       <ExportOptimizationReportModal
         open={openExportModal}
