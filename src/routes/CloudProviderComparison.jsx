@@ -33,7 +33,7 @@ export function CloudProviderComparison() {
 
             <FaArrowLeftLong
               color="gray"
-              onClick={() => navigate('/dashboard/getting-started')}
+              onClick={() => navigate(-1)}
               style={{ cursor: 'pointer' }}
             />
 
