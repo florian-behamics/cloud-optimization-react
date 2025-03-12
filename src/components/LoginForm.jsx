@@ -190,11 +190,7 @@ export function LoginForm() {
               Forgot password?
             </Box>
           </Box>
-          {error && (
-            <Typography color="error" variant="body2">
-              {error}
-            </Typography>
-          )}
+          {error && <div style={{ color: 'red', fontSize: '14px' }}>{error}</div>}
           <Button
             variant="contained"
             size="large"

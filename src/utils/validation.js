@@ -7,12 +7,17 @@ export const validateLoginForm = (email, password) => {
     errors.email = 'Invalid email format.';
   }
 
+  // if (!password) {
+  //   errors.password = 'Password is required.';
+  // } else if (password.length < 8) {
+  //   errors.password = 'Password must be at least 8 characters long.';
+  // } else {
+  //   errors.password = 'Passwords must match.';
+  // }
   if (!password) {
     errors.password = 'Password is required.';
   } else if (password.length < 8) {
     errors.password = 'Password must be at least 8 characters long.';
-  } else {
-    errors.password = 'Passwords must match.';
   }
 
   return errors;

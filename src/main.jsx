@@ -37,6 +37,11 @@ import MonitorVms from './routes/MonitorVms';
 import SingleMonitorVm from './routes/SingleMonitorVm';
 import CloudCostHistory from './routes/CloudCostHistory';
 import Settings from './routes/Settings';
+import FirstQuestion from './routes/questions/FirstQuestion';
+import SecondQuestion from './routes/questions/SecondQuestion';
+import ThirdQuestion from './routes/questions/ThirdQuestion';
+import FourthQuestion from './routes/questions/FourthQuestion';
+import FifthQuestion from './routes/questions/FifthQuestion';
 export const ALL_ROUTES = [
   {
     path: '/',
@@ -74,6 +79,26 @@ export const ALL_ROUTES = [
       {
         path: 'getting-started/questions',
         element: <GettingStartedQuestions />,
+      },
+      {
+        path: 'getting-started/questions/first-question',
+        element: <FirstQuestion />,
+      },
+      {
+        path: 'getting-started/questions/second-question',
+        element: <SecondQuestion />,
+      },
+      {
+        path: 'getting-started/questions/third-question',
+        element: <ThirdQuestion />,
+      },
+      {
+        path: 'getting-started/questions/fourth-question',
+        element: <FourthQuestion />,
+      },
+      {
+        path: 'getting-started/questions/fifth-question',
+        element: <FifthQuestion />,
       },
       {
         path: 'optimize-sign-to-cloud',

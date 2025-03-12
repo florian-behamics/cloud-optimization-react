@@ -32,7 +32,7 @@ export function GettingStarted() {
       description:
         'Using simple templates, create the most cost-effective cloud architecture automatically.',
       icon: TbCloud,
-      onClick: () => handleRouteSteps('/dashboard/getting-started/questions'),
+      onClick: () => handleRouteSteps('/dashboard/getting-started/questions/first-question'),
     },
     {
       title: 'Optimize Cloud',

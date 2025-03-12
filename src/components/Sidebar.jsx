@@ -285,7 +285,7 @@ export function Sidebar() {
               sx={{ mb: 2 }}
             />
             <SidebarItem
-              href="/dashboard/orders"
+              href="/dashboard/cloud-cost-history"
               title="Dashboard"
               icon={<TbHome size={ICON_SIZE} />}
             />
@@ -300,7 +300,7 @@ export function Sidebar() {
               icon={<MdOutlineMonitor size={ICON_SIZE} />}
             />
             <SidebarItem
-              href="/changelog"
+              href="/dashboard/cloud-template-output"
               title="Cloud Templates"
               icon={<TbCloud size={ICON_SIZE} />}
             />
