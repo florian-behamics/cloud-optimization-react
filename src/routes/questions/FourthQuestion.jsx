@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { PageContainer } from '../../components/PageContainer';
 import { useNavigate } from 'react-router-dom';
+import { FaArrowLeftLong } from 'react-icons/fa6';
 
 export function FourthQuestion() {
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ export function FourthQuestion() {
 
   return (
     <PageContainer>
+      <FaArrowLeftLong color="gray" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }} />
       <Box sx={{ py: 2 }}>
         <Container maxWidth="md">
           <Box sx={{ maxWidth: 'md', mx: 'auto', textAlign: { lg: 'center' } }}>

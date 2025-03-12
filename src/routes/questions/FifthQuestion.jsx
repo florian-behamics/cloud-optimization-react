@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { PageContainer } from '../../components/PageContainer';
-
+import { FaArrowLeftLong } from 'react-icons/fa6';
 export function FifthQuestion() {
   const navigate = useNavigate();
   const [answer, setAnswer] = useState('');
@@ -27,6 +27,7 @@ export function FifthQuestion() {
 
   return (
     <PageContainer>
+      <FaArrowLeftLong color="gray" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }} />
       <Box sx={{ py: 2 }}>
         <Container maxWidth="sm">
           <Box sx={{ textAlign: 'center', mb: 5 }}>

@@ -42,6 +42,14 @@ import SecondQuestion from './routes/questions/SecondQuestion';
 import ThirdQuestion from './routes/questions/ThirdQuestion';
 import FourthQuestion from './routes/questions/FourthQuestion';
 import FifthQuestion from './routes/questions/FifthQuestion';
+import CloudTemplate from './routes/CloudTemplate';
+import CloudTemplateDetails from './routes/CloudTemplateDetails';
+import DeployApp from './routes/DeployApp';
+import ManuallyDeployApp from './routes/ManuallyDeployApp';
+import DeployingLoader from './routes/DeployingLoader';
+import AppDeployFinish from './routes/AppDeployFinish';
+import CiCdDeployApp from './routes/CiCdDeployApp';
+import AppDeployCiCdFinish from './routes/AppDeployCiCdFinish';
 export const ALL_ROUTES = [
   {
     path: '/',
@@ -107,6 +115,38 @@ export const ALL_ROUTES = [
       {
         path: 'apply-optimizations-finish',
         element: <ApplyOptimizationsFinish />,
+      },
+      {
+        path: 'cloud-template',
+        element: <CloudTemplate />,
+      },
+      {
+        path: 'cloud-template/deploy-app',
+        element: <DeployApp />,
+      },
+      {
+        path: 'cloud-template/deploy-app/manual',
+        element: <ManuallyDeployApp />,
+      },
+      {
+        path: 'cloud-template/deploy-app/ci-cd',
+        element: <CiCdDeployApp />,
+      },
+      {
+        path: 'cloud-template/deploy-app/manual/finish',
+        element: <AppDeployFinish />,
+      },
+      {
+        path: 'cloud-template/deploy-app/ci-cd/finish',
+        element: <AppDeployCiCdFinish />,
+      },
+      {
+        path: 'cloud-template/deploy-app/deploying-loader',
+        element: <DeployingLoader />,
+      },
+      {
+        path: 'cloud-template/details',
+        element: <CloudTemplateDetails />,
       },
       {
         path: 'cloud-cost-history',

@@ -8,6 +8,9 @@ import { DashboardHeader } from '../components/DashboardHeader';
 import { SimplePieChart } from '../components/SimplePieChart';
 import { ChartCard } from '../components/ChartCard';
 import { DUMMY_TIMESERIES } from '../data/timeseries';
+import { FaArrowLeftLong } from 'react-icons/fa6';
+import { DateRangerChanger } from '../components/DateRangerChanger';
+import { useNavigate } from 'react-router-dom';
 
 const customPalette = ['#ADD8E6', '#4A90E2', '#D3D3D3'];
 
@@ -40,20 +43,21 @@ const lineData = [
 ];
 
 export const MonitorVms = (props) => {
+  const navigate = useNavigate();
   return (
     <PageContainer>
       <DashboardHeader
         title="Monitor Virtual Machines"
         // subtitle="Welcome back, Ally"
-        actions={<Stack spacing={1} direction="row"></Stack>}
+        actions={<DateRangerChanger />}
       />
       <Divider orientation="horizontal" flexItem />
+      <FaArrowLeftLong color="gray" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }} />
       <Box sx={{ mt: 4 }}>
         <Box display="flex" justifyContent="space-between">
           <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, fontSize: 32 }}>
             39 VMs
           </Typography>
-          <Typography>25-01/2025 - 25/02/2025</Typography>
         </Box>
         <Typography variant="body2" sx={{ fontSize: 18, color: 'secondary.main' }}>
           25 running 14 deallocated

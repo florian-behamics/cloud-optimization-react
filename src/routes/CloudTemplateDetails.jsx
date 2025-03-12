@@ -19,24 +19,35 @@ import { useNavigate } from 'react-router-dom';
 import { DashboardHeader } from '../components/DashboardHeader';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 
-export function GeneratedSpecs() {
+export function CloudTemplateDetails() {
   const navigate = useNavigate();
   const [showDetails, setShowDetails] = useState(false);
 
   return (
     <PageContainer>
-      <DashboardHeader title="Generated Specs" />
+      <DashboardHeader title="Cloud Template Details" />
       <Divider />
 
       <FaArrowLeftLong color="gray" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }} />
 
       <Box sx={{ mt: 5 }}>
+        <Typography
+          sx={{
+            fontSize: '1.2rem',
+            color: 'success.main',
+            textAlign: 'right',
+            fontWeight: 600,
+            mb: 2,
+          }}
+        >
+          Ready for Deployment
+        </Typography>
         <Paper
           elevation={0}
           sx={{ p: 2, border: '1px solid', borderColor: 'divider', borderRadius: 1 }}
         >
           <Box sx={{ mb: 3 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
+            {/* <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
               <Box
                 sx={{
                   p: 1,
@@ -52,8 +63,8 @@ export function GeneratedSpecs() {
               <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
                 Cloud Provider
               </Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, ml: 4 }}>
+            </Box> */}
+            {/* <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, ml: 4 }}>
               <Button variant="outlined" sx={{ fontSize: '0.8rem', px: 1.5, py: 0.5 }}>
                 Our Solution
               </Button>
@@ -65,10 +76,10 @@ export function GeneratedSpecs() {
               >
                 40% Cheaper
               </Typography>
-            </Box>
+            </Box> */}
           </Box>
 
-          <Box
+          {/* <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -88,11 +99,76 @@ export function GeneratedSpecs() {
             <Typography sx={{ fontSize: '0.9rem', fontWeight: 500 }}>
               {showDetails ? 'Hide Details' : 'Show Details'}
             </Typography>
+          </Box> */}
+
+          <Box sx={{ mb: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
+              <Box
+                sx={{
+                  p: 1,
+                  borderRadius: 1,
+                  bgcolor: 'primary.50',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <ComputerIcon sx={{ color: 'primary.700', fontSize: 50 }} />
+              </Box>
+              <Typography sx={{ fontWeight: 600, fontSize: '22px' }}>Virtual Machines</Typography>
+              <Typography
+                sx={{ fontWeight: 600, fontSize: '0.9rem', color: 'success.main', ml: 'auto' }}
+              >
+                2/2 Running
+              </Typography>
+            </Box>
+            <Stack spacing={1} sx={{ ml: 10 }}>
+              <Typography sx={{ fontSize: '0.9rem' }}>
+                Vm1 (8 vCPUs, 8GB RAM, 150GB storage) -{' '}
+                <span style={{ color: 'green', fontWeight: 600, marginLeft: '3px' }}>Running</span>
+              </Typography>
+              <Typography sx={{ fontSize: '0.9rem' }}>
+                Vm2 (8 vCPUs, 3GB RAM, 150GB storage) -{' '}
+                <span style={{ color: 'green', fontWeight: 600 }}>Running</span>
+              </Typography>
+            </Stack>
+          </Box>
+
+          <Box sx={{ mb: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
+              <Box
+                sx={{
+                  p: 1,
+                  borderRadius: 1,
+                  bgcolor: 'primary.50',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <StorageIcon sx={{ color: 'primary.700', fontSize: 50 }} />
+              </Box>
+              <Typography sx={{ fontWeight: 600, fontSize: '22px' }}>Databases</Typography>
+              <Typography
+                sx={{ fontWeight: 600, fontSize: '0.9rem', color: 'success.main', ml: 'auto' }}
+              >
+                2/2 Running
+              </Typography>
+            </Box>
+            <Stack spacing={1} sx={{ ml: 10 }}>
+              <Typography sx={{ fontSize: '0.9rem' }}>
+                DB1 - MongoDb -{' '}
+                <span style={{ color: 'green', fontWeight: 600, marginLeft: '3px' }}>Running</span>
+              </Typography>
+              <Typography sx={{ fontSize: '0.9rem' }}>
+                DB2 - MongoDb - <span style={{ color: 'green', fontWeight: 600 }}>Running</span>
+              </Typography>
+            </Stack>
           </Box>
 
           {showDetails && (
             <>
-              <Box sx={{ mb: 3 }}>
+              {/* <Box sx={{ mb: 3 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
                   <Box
                     sx={{
@@ -121,60 +197,45 @@ export function GeneratedSpecs() {
                     Vm2 (8 vCPUs, 3GB RAM, 150GB storage) - $60/mo
                   </Typography>
                 </Stack>
-              </Box>
-
-              <Box sx={{ mb: 3 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
-                  <Box
-                    sx={{
-                      p: 1,
-                      borderRadius: 1,
-                      bgcolor: 'primary.50',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <StorageIcon sx={{ color: 'primary.700', fontSize: 20 }} />
-                  </Box>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                    Databases
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.9rem', color: 'text.secondary', ml: 'auto' }}>
-                    $100/mo
-                  </Typography>
-                </Box>
-                <Stack spacing={1} sx={{ ml: 4 }}>
-                  <Typography sx={{ fontSize: '0.9rem' }}>DB1 - MongoDb - $50/mo</Typography>
-                  <Typography sx={{ fontSize: '0.9rem' }}>DB2 - MongoDb - $50/mo</Typography>
-                </Stack>
-              </Box>
+              </Box> */}
             </>
           )}
 
           <Box
             sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 4 }}
           >
-            <Typography variant="h6" sx={{ fontSize: '1rem', fontWeight: 700 }}>
+            {/* <Typography variant="h6" sx={{ fontSize: '1rem', fontWeight: 700 }}>
               Total Cost:
             </Typography>
             <Typography variant="h6" sx={{ fontSize: '1rem', fontWeight: 700 }}>
               $235/mo
-            </Typography>
+            </Typography> */}
           </Box>
-
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1.5, mt: 3 }}>
-            <Button variant="outlined" sx={{ fontSize: '0.8rem', px: 1.5, py: 0.5 }}>
-              Modify Answer
+          {/* <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1.5, mt: 3 }}>
+            <Button variant="outlined" color="secondary">
+              View Details
             </Button>
-            <Button variant="contained" sx={{ fontSize: '0.8rem', px: 1.5, py: 0.5 }}>
-              Approve
-            </Button>
-          </Box>
+          </Box> */}
         </Paper>
+        <Box sx={{ display: 'flex', p: 2, justifyContent: 'flex-end', gap: 1.5, mt: 3 }}>
+          <Button
+            onClick={() => navigate('/dashboard/monitor-vms')}
+            variant="outlined"
+            color="secondary"
+          >
+            Monitor
+          </Button>
+          <Button
+            onClick={() => navigate('/dashboard/cloud-template/deploy-app')}
+            variant="contained"
+            color="primary"
+          >
+            Deploy App
+          </Button>
+        </Box>
       </Box>
     </PageContainer>
   );
 }
 
-export default GeneratedSpecs;
+export default CloudTemplateDetails;

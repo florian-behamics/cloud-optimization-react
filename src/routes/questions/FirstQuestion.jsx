@@ -11,6 +11,7 @@ import {
   Paper,
 } from '@mui/material';
 import { PageContainer } from '../../components/PageContainer';
+import { FaArrowLeftLong } from 'react-icons/fa6';
 
 export function FirstQuestion() {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ export function FirstQuestion() {
 
   return (
     <PageContainer>
+      <FaArrowLeftLong color="gray" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }} />
       <Box sx={{ py: 2 }}>
         <Container maxWidth="md">
           <Box sx={{ maxWidth: 'md', mx: 'auto', textAlign: { lg: 'center' } }}>

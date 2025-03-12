@@ -3,6 +3,7 @@ import { Box, Typography, Paper, Button, Container, Stack, Divider } from '@mui/
 import { PageContainer } from '../components/PageContainer';
 import { useNavigate } from 'react-router-dom';
 import { DashboardHeader } from '../components/DashboardHeader';
+import { FaArrowLeftLong } from 'react-icons/fa6';
 
 export const CloudTemplateOutput = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ export const CloudTemplateOutput = () => {
         }
       />
       <Divider orientation="horizontal" flexItem />
+
       <Box mt={2}>
         {' '}
         {/* Reduced size to 'sm' for a smaller layout */}
@@ -107,12 +109,12 @@ export const CloudTemplateOutput = () => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => navigate('/dashboard/monitor-vms')}
+            onClick={() => navigate('/dashboard/cloud-template')}
             sx={{
               display: { xs: 'none', md: 'flex' },
             }}
           >
-            Finish
+            View Template
           </Button>
         </Box>
       </Box>

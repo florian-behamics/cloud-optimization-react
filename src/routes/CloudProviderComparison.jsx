@@ -20,22 +20,7 @@ export function CloudProviderComparison() {
       <DashboardHeader
         // title="Cloud Provider Comparison"
         // subtitle="Welcome back, Ally"
-        actions={
-          <Stack spacing={1} direction="row">
-            {/* <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                broadcastTour('welcome');
-              }}
-              sx={{
-                display: { xs: 'none', md: 'flex' },
-              }}
-            >
-              View Details
-            </Button> */}
-          </Stack>
-        }
+        actions={<Stack spacing={1} direction="row"></Stack>}
       />
       <Divider orientation="horizontal" flexItem />
       <Box sx={{ width: '100%' }}>
@@ -48,7 +33,7 @@ export function CloudProviderComparison() {
 
             <FaArrowLeftLong
               color="gray"
-              onClick={() => navigate(-1)}
+              onClick={() => navigate('/dashboard/getting-started')}
               style={{ cursor: 'pointer' }}
             />
 
